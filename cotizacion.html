@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-HN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CotizaciÃ³n Formal B2B | HRMS Honduras</title>
+  <title>Cotización Formal B2B | HRMS Honduras</title>
   <link rel="icon" type="image/png" href="./icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,14 +59,14 @@
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased">
 
-  <!-- PANEL DE EDICIÃ“N RÃPIDA (Se oculta automÃ¡ticamente al imprimir o guardar en PDF) -->
+  <!-- PANEL DE EDICIÓN RÁPIDA (Se oculta automáticamente al imprimir o guardar en PDF) -->
   <div class="no-print bg-zkBlue-dark text-white border-b border-white/10 sticky top-0 z-50 shadow-lg">
     <div class="max-w-5xl mx-auto px-4 py-3">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-3 border-b border-white/10">
         <div class="flex items-center gap-3">
           <img src="./icon.png" alt="HRMS Honduras" class="w-8 h-8 rounded-lg bg-white p-0.5" />
           <div>
-            <h1 class="text-sm font-bold tracking-wide uppercase text-white">Generador de CotizaciÃ³n Formal B2B â€” HRMS Honduras</h1>
+            <h1 class="text-sm font-bold tracking-wide uppercase text-white">Generador de Cotización Formal B2B — HRMS Honduras</h1>
             <p class="text-xs text-blue-200">Personalice los datos del cliente abajo o edite cualquier texto directamente sobre la hoja antes de exportar a PDF.</p>
           </div>
         </div>
@@ -81,10 +81,10 @@
         </div>
       </div>
 
-      <!-- Controles rÃ¡pidos -->
+      <!-- Controles rápidos -->
       <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5 pt-3 text-xs">
         <div>
-          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">NÂ° CotizaciÃ³n</label>
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">N° Cotización</label>
           <input id="in-quote" type="text" value="COT-HN-2026-018" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
         </div>
         <div class="md:col-span-2">
@@ -96,7 +96,7 @@
           <input id="in-rtn" type="text" placeholder="0501-9000-000000" value="0501-9020-123456" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
         </div>
         <div>
-          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">AtenciÃ³n a (Contacto)</label>
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">Atención a (Contacto)</label>
           <input id="in-contact" type="text" placeholder="Lic. / Gerencia General" value="Gerencia General / RRHH" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
         </div>
         <div>
@@ -107,7 +107,7 @@
     </div>
   </div>
 
-  <!-- HOJA DE COTIZACIÃ“N FORMAL (TAMAÃ‘O CARTA / A4) -->
+  <!-- HOJA DE COTIZACIÓN FORMAL (TAMAÑO CARTA / A4) -->
   <main class="py-6 px-4 print:p-0">
     <div class="print-sheet max-w-[850px] mx-auto bg-white rounded-xl shadow-xl border border-slate-200 p-8 md:p-10">
 
@@ -120,23 +120,23 @@
               <span class="text-xl font-black tracking-tight text-zkBlue uppercase">HRMS HONDURAS</span>
               <span class="bg-zkGreen/15 text-zkGreen text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-zkGreen/30 uppercase">Software B2B</span>
             </div>
-            <p class="text-xs font-semibold text-slate-600 mt-0.5">Sistema de GestiÃ³n de Recursos Humanos, Planilla IHSS/RAP y BiometrÃ­a ZKTeco</p>
-            <p class="text-[11px] text-slate-500 mt-0.5">ðŸ“ San Pedro Sula / Tegucigalpa, Honduras â€¢ ðŸ“ž Tel. / WhatsApp: <strong>+504 9644-7721</strong></p>
+            <p class="text-xs font-semibold text-slate-600 mt-0.5">Sistema de Gestión de Recursos Humanos, Planilla IHSS/RAP y Biometría ZKTeco</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">📍 San Pedro Sula / Tegucigalpa, Honduras • 📞 Tel. / WhatsApp: <strong>+504 9644-7721</strong></p>
           </div>
         </div>
 
         <div class="text-right shrink-0">
           <div class="inline-block bg-zkBlue text-white px-3.5 py-1 rounded-md text-xs font-extrabold tracking-wider uppercase">
-            PROPUESTA TÃ‰CNICA Y COMERCIAL
+            PROPUESTA TÉCNICA Y COMERCIAL
           </div>
           <p class="text-xs font-bold text-slate-800 mt-1.5">
-            CotizaciÃ³n NÂ°: <span id="out-quote" contenteditable="true" class="text-zkBlue font-mono">COT-HN-2026-018</span>
+            Cotización N°: <span id="out-quote" contenteditable="true" class="text-zkBlue font-mono">COT-HN-2026-018</span>
           </p>
           <p class="text-[11px] text-slate-500">
-            Fecha de EmisiÃ³n: <span id="out-date" contenteditable="true" class="font-semibold text-slate-700"></span>
+            Fecha de Emisión: <span id="out-date" contenteditable="true" class="font-semibold text-slate-700"></span>
           </p>
           <p class="text-[11px] text-slate-500">
-            Vigencia: <span contenteditable="true" class="font-semibold text-emerald-700">15 dÃ­as calendario</span>
+            Vigencia: <span contenteditable="true" class="font-semibold text-emerald-700">15 días calendario</span>
           </p>
         </div>
       </header>
@@ -149,39 +149,39 @@
           <p class="text-[11px] text-slate-600">RTN: <span id="out-rtn" contenteditable="true" class="font-medium">0501-9020-123456</span></p>
         </div>
         <div>
-          <span class="text-[10px] font-bold uppercase text-slate-400 block">AtenciÃ³n a:</span>
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">Atención a:</span>
           <p id="out-contact" contenteditable="true" class="font-bold text-slate-800 mt-0.5">Gerencia General / RRHH</p>
-          <p class="text-[11px] text-slate-600">UbicaciÃ³n: <span id="out-city" contenteditable="true">San Pedro Sula / Tegucigalpa</span></p>
+          <p class="text-[11px] text-slate-600">Ubicación: <span id="out-city" contenteditable="true">San Pedro Sula / Tegucigalpa</span></p>
         </div>
         <div>
-          <span class="text-[10px] font-bold uppercase text-slate-400 block">Moneda y CondiciÃ³n Fiscal:</span>
-          <p class="font-bold text-zkBlue mt-0.5">Lempiras HondureÃ±os (L / HNL)</p>
-          <p class="text-[11px] text-slate-600">InstalaciÃ³n Local Offline-First (Windows)</p>
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">Moneda y Condición Fiscal:</span>
+          <p class="font-bold text-zkBlue mt-0.5">Lempiras Hondureños (L / HNL)</p>
+          <p class="text-[11px] text-slate-600">Instalación Local Offline-First (Windows)</p>
         </div>
       </section>
 
-      <!-- 3. ALCANCE TÃ‰CNICO DEL SISTEMA -->
+      <!-- 3. ALCANCE TÉCNICO DEL SISTEMA -->
       <section class="mb-4">
         <h2 class="text-xs font-extrabold uppercase tracking-wider text-zkBlue mb-2 flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-          1. Alcance TÃ©cnico Incluido en el Sistema HRMS Honduras
+          1. Alcance Técnico Incluido en el Sistema HRMS Honduras
         </h2>
         <div class="grid grid-cols-2 gap-2.5 text-[11px]">
           <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
-            <p class="font-bold text-zkBlue">âœ” Motor de Planilla Legal HondureÃ±a (Quincenal y Mensual)</p>
-            <p class="text-slate-600 mt-0.5">CÃ¡lculo automÃ¡tico de techos y porcentajes editables de <strong>IHSS (Salud EM e IVM)</strong>, <strong>RAP (1.5% sobre excedente)</strong>, horas extras (+25%, +50%, +75%, +100%), bonos, prÃ©stamos, reporte general de planilla y vouchers individuales.</p>
+            <p class="font-bold text-zkBlue">✔ Motor de Planilla Legal Hondureña (Quincenal y Mensual)</p>
+            <p class="text-slate-600 mt-0.5">Cálculo automático de techos y porcentajes editables de <strong>IHSS (Salud EM e IVM)</strong>, <strong>RAP (1.5% sobre excedente)</strong>, horas extras (+25%, +50%, +75%, +100%), bonos, préstamos, reporte general de planilla y vouchers individuales.</p>
           </div>
           <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
-            <p class="font-bold text-zkBlue">âœ” SincronizaciÃ³n ZKTeco TCP/IP + Lector CÃ³digo QR USB</p>
-            <p class="text-slate-600 mt-0.5">Descarga directa de marcajes desde relojes biomÃ©tricos <strong>ZKTeco en red local (Puerto 4370) en 5 segundos</strong> sin usar memorias USB, o marcaje instantÃ¡neo mediante carnets con cÃ³digo QR e impresiÃ³n de gafetes.</p>
+            <p class="font-bold text-zkBlue">✔ Sincronización ZKTeco TCP/IP + Lector Código QR USB</p>
+            <p class="text-slate-600 mt-0.5">Descarga directa de marcajes desde relojes biométricos <strong>ZKTeco en red local (Puerto 4370) en 5 segundos</strong> sin usar memorias USB, o marcaje instantáneo mediante carnets con código QR e impresión de gafetes.</p>
           </div>
           <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
-            <p class="font-bold text-zkBlue">âœ” Expediente Digital y Acciones de Personal</p>
+            <p class="font-bold text-zkBlue">✔ Expediente Digital y Acciones de Personal</p>
             <p class="text-slate-600 mt-0.5">Directorio completo de empleados, historial de aumentos salariales, control de vacaciones, permisos con/sin goce de sueldo, incapacidades, sanciones y resguardo de contratos.</p>
           </div>
           <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
-            <p class="font-bold text-zkBlue">âœ” Privacidad Total 100% Offline-First en su PC</p>
-            <p class="text-slate-600 mt-0.5">Sus datos financieros y salariales residen Ãºnicamente en el disco duro de su empresa con protecciÃ³n por <strong>ContraseÃ±a Maestra</strong> y exportaciÃ³n de respaldos locales en 1 clic.</p>
+            <p class="font-bold text-zkBlue">✔ Privacidad Total 100% Offline-First en su PC</p>
+            <p class="text-slate-600 mt-0.5">Sus datos financieros y salariales residen únicamente en el disco duro de su empresa con protección por <strong>Contraseña Maestra</strong> y exportación de respaldos locales en 1 clic.</p>
           </div>
         </div>
       </section>
@@ -190,27 +190,27 @@
       <section class="mb-4">
         <h2 class="text-xs font-extrabold uppercase tracking-wider text-zkBlue mb-2 flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-          2. Paquetes Promocionales de ImplementaciÃ³n "Llave en Mano" (Recomendado)
+          2. Paquetes Promocionales de Implementación "Llave en Mano" (Recomendado)
         </h2>
         <div class="grid grid-cols-2 gap-3.5">
           <!-- Paquete 1 -->
           <div class="rounded-xl border-2 border-slate-200 bg-slate-50/70 p-3.5 relative">
             <div class="flex items-center justify-between">
               <div>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Paquete 01 â€¢ Hasta 15 Empleados</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Paquete 01 • Hasta 15 Empleados</span>
                 <h3 class="text-sm font-extrabold text-zkBlue">PAQUETE PYME INICIO</h3>
               </div>
               <div class="text-right">
                 <span class="text-lg font-black text-zkBlue" contenteditable="true">L. 7,900.00</span>
-                <span class="block text-[9px] text-slate-500 font-semibold">Pago Ãšnico Llave en Mano</span>
+                <span class="block text-[9px] text-slate-500 font-semibold">Pago Único Llave en Mano</span>
               </div>
             </div>
             <ul class="mt-2 space-y-1 text-[11px] text-slate-700 border-t border-slate-200 pt-2">
-              <li>â€¢ <strong>Licencia Anual Plan Emprendedor</strong> (hasta 15 colaboradores).</li>
-              <li>â€¢ ConfiguraciÃ³n de mÃ³dulo de marcaje por <strong>CÃ³digo QR USB / PC</strong>.</li>
-              <li>â€¢ DiseÃ±o y generaciÃ³n de <strong>carnets digitales con foto y QR</strong>.</li>
-              <li>â€¢ Carga inicial de su base de datos de empleados actual.</li>
-              <li>â€¢ CapacitaciÃ³n operativa a personal administrativo / contable.</li>
+              <li>• <strong>Licencia Anual Plan Emprendedor</strong> (hasta 15 colaboradores).</li>
+              <li>• Configuración de módulo de marcaje por <strong>Código QR USB / PC</strong>.</li>
+              <li>• Diseño y generación de <strong>carnets digitales con foto y QR</strong>.</li>
+              <li>• Carga inicial de su base de datos de empleados actual.</li>
+              <li>• Capacitación operativa a personal administrativo / contable.</li>
             </ul>
           </div>
 
@@ -218,26 +218,26 @@
           <div class="rounded-xl border-2 border-zkGreen bg-zkGreen-light/40 p-3.5 relative">
             <div class="flex items-center justify-between">
               <div>
-                <span class="inline-block bg-zkGreen text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded mb-0.5">MÃ¡s Solicitado â€¢ Hasta 35 Empleados</span>
+                <span class="inline-block bg-zkGreen text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded mb-0.5">Más Solicitado • Hasta 35 Empleados</span>
                 <h3 class="text-sm font-extrabold text-zkBlue">PAQUETE EMPRESA TOTAL</h3>
               </div>
               <div class="text-right">
                 <span class="text-lg font-black text-zkGreen" contenteditable="true">L. 14,500.00</span>
-                <span class="block text-[9px] text-slate-600 font-semibold">Pago Ãšnico Llave en Mano</span>
+                <span class="block text-[9px] text-slate-600 font-semibold">Pago Único Llave en Mano</span>
               </div>
             </div>
             <ul class="mt-2 space-y-1 text-[11px] text-slate-800 border-t border-zkGreen/20 pt-2">
-              <li>â€¢ <strong>Licencia Anual Plan PYME Pro</strong> (hasta 35 colaboradores).</li>
-              <li>â€¢ <strong>Enlace directo en red TCP/IP con sus relojes biomÃ©tricos ZKTeco</strong>.</li>
-              <li>â€¢ MigraciÃ³n completa de su planilla actual desde Excel al sistema.</li>
-              <li>â€¢ ParametrizaciÃ³n contable completa (Techos IHSS, RAP, Horas Extras).</li>
-              <li>â€¢ AcompaÃ±amiento directo durante sus <strong>primeros 2 cierres de planilla</strong>.</li>
+              <li>• <strong>Licencia Anual Plan PYME Pro</strong> (hasta 35 colaboradores).</li>
+              <li>• <strong>Enlace directo en red TCP/IP con sus relojes biométricos ZKTeco</strong>.</li>
+              <li>• Migración completa de su planilla actual desde Excel al sistema.</li>
+              <li>• Parametrización contable completa (Techos IHSS, RAP, Horas Extras).</li>
+              <li>• Acompañamiento directo durante sus <strong>primeros 2 cierres de planilla</strong>.</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- 5. TABLA DE MODALIDADES DE LICENCIAMIENTO ESTÃNDAR -->
+      <!-- 5. TABLA DE MODALIDADES DE LICENCIAMIENTO ESTÁNDAR -->
       <section class="mb-4">
         <h2 class="text-xs font-extrabold uppercase tracking-wider text-zkBlue mb-2 flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
@@ -282,24 +282,24 @@
       <!-- 6. CONDICIONES COMERCIALES Y FIRMAS -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-slate-200 text-[10.5px] text-slate-600">
         <div>
-          <h4 class="font-extrabold text-zkBlue uppercase text-[11px] mb-1">Condiciones Comerciales y GarantÃ­a:</h4>
+          <h4 class="font-extrabold text-zkBlue uppercase text-[11px] mb-1">Condiciones Comerciales y Garantía:</h4>
           <ul class="space-y-0.5" contenteditable="true">
-            <li>â€¢ <strong>Tiempo de Entrega e InstalaciÃ³n:</strong> Inmediata (mismo dÃ­a hÃ¡bil vÃ­a remota o presencial).</li>
-            <li>â€¢ <strong>Forma de Pago:</strong> Transferencia bancaria (BAC / AtlÃ¡ntida / Ficohsa / BanpaÃ­s).</li>
-            <li>â€¢ <strong>Soporte TÃ©cnico y Actualizaciones:</strong> Incluido durante todo el perÃ­odo activo de licencia.</li>
-            <li>â€¢ <strong>Requerimientos MÃ­nimos:</strong> PC con Windows 10 o Windows 11 (64 bits), 4 GB RAM.</li>
+            <li>• <strong>Tiempo de Entrega e Instalación:</strong> Inmediata (mismo día hábil vía remota o presencial).</li>
+            <li>• <strong>Forma de Pago:</strong> Transferencia bancaria (BAC / Atlántida / Ficohsa / Banpaís).</li>
+            <li>• <strong>Soporte Técnico y Actualizaciones:</strong> Incluido durante todo el período activo de licencia.</li>
+            <li>• <strong>Requerimientos Mínimos:</strong> PC con Windows 10 o Windows 11 (64 bits), 4 GB RAM.</li>
           </ul>
         </div>
 
         <div class="grid grid-cols-2 gap-6 items-end pt-6 text-center text-[11px]">
           <div>
             <div class="border-t border-slate-800 pt-1 font-bold text-slate-900">HRMS Honduras</div>
-            <p class="text-[10px] text-slate-500">ConsultorÃ­a Comercial B2B</p>
+            <p class="text-[10px] text-slate-500">Consultoría Comercial B2B</p>
             <p class="text-[10px] font-semibold text-zkBlue">+504 9644-7721</p>
           </div>
           <div>
-            <div class="border-t border-slate-800 pt-1 font-bold text-slate-900">AceptaciÃ³n del Cliente</div>
-            <p class="text-[10px] text-slate-500">Firma y Sello de AutorizaciÃ³n</p>
+            <div class="border-t border-slate-800 pt-1 font-bold text-slate-900">Aceptación del Cliente</div>
+            <p class="text-[10px] text-slate-500">Firma y Sello de Autorización</p>
             <p class="text-[10px] text-slate-400">Fecha: ____/____/2026</p>
           </div>
         </div>
@@ -327,4 +327,3 @@
   </script>
 </body>
 </html>
-
