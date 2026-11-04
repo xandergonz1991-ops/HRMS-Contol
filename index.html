@@ -164,15 +164,15 @@
           <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-slate-200 text-xs font-semibold text-slate-600">
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-              <span>Techo IHSS L. 11,903.13 listo</span>
+              <span>Planilla Quincenal (50%) y Mensual</span>
             </div>
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-              <span>Enlace ZKTeco Puerto 4370</span>
+              <span>IHSS (L. 11,903.13) y RAP (1.5%)</span>
             </div>
             <div class="flex items-center gap-2">
               <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-              <span>Marcaje con Lector QR USB</span>
+              <span>Enlace ZKTeco (4370) y QR USB</span>
             </div>
           </div>
         </div>
@@ -193,13 +193,13 @@
 
             <!-- Pestañas Rápidas para cambiar la captura del Hero -->
             <div class="bg-slate-100 px-3 py-2 border-b border-slate-200 flex flex-wrap gap-1.5 text-xs font-bold">
-              <button type="button" onclick="setHeroShot('./Captura de pantalla (176).png', 'Nómina Procesada en Lempiras: Sueldo ordinario, horas extras, bonos y deducciones IHSS/RAP.', this)"
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (176).png', 'Nómina Quincenal y Mensual en Lempiras: Sueldo, horas extras, bonos, IHSS/RAP y Reporte General Contable.', this)"
                       class="hero-tab-btn px-3 py-1.5 rounded-lg bg-zkBlue text-white transition-all">
-                1. Planilla Calculada
+                1. Planilla Quincenal/Mensual
               </button>
-              <button type="button" onclick="setHeroShot('./Captura de pantalla (177).png', 'Voucher / Boleta de Pago lista para imprimir con desglose legal de IHSS (EM/IVM) y RAP.', this)"
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (177).png', 'Voucher / Boleta Individual e Impresión de Planilla General con encabezado de empresa y deducciones.', this)"
                       class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
-                2. Boleta de Pago
+                2. Reportes y Vouchers
               </button>
               <button type="button" onclick="setHeroShot('./Captura de pantalla (173).png', 'Control de Asistencia: Marcaje por Reloj ZKTeco en Red, Código QR USB, Huella USB o RFID.', this)"
                       class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
@@ -225,7 +225,7 @@
             <!-- Pie explicativo de la captura activa -->
             <div class="bg-white px-4 py-3 border-t border-slate-200 flex items-center justify-between gap-4">
               <p id="hero-main-caption" class="text-xs font-semibold text-slate-700">
-                Nómina Procesada en Lempiras: Sueldo ordinario, horas extras, bonos y deducciones IHSS/RAP.
+                Nómina Quincenal y Mensual en Lempiras: Sueldo, horas extras, bonos, IHSS/RAP y Reporte General Contable.
               </p>
               <a href="#capturas" class="shrink-0 text-xs font-extrabold text-zkGreen hover:underline">
                 Ver las 10 capturas →
@@ -373,21 +373,21 @@
         <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
           <div>
             <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
-                 onclick="openLightbox('./Captura de pantalla (177).png', 'Módulo 04: Voucher de Pago Oficial con desglose de Horas Extras (+25%), IHSS Salud (EM), IHSS Pensiones (IVM) y RAP')">
+                 onclick="openLightbox('./Captura de pantalla (177).png', 'Módulo 04: Planilla Quincenal (50%) y Mensual (100%), Reporte Contable General y Voucher con IHSS (EM/IVM) y RAP')">
               <img src="./Captura de pantalla (177).png" alt="Voucher de Pago con IHSS y RAP en HRMS Honduras" />
               <span class="absolute top-3 left-3 bg-zkGreen text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
-                Módulo 04 • Planilla Ley Hondureña
+                Módulo 04 • Planilla Quincenal y Mensual
               </span>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-extrabold text-zkBlue">Motor de Nómina Hondureña (IHSS L. 11,903.13 y RAP 1.5%)</h3>
+              <h3 class="text-xl font-extrabold text-zkBlue">Motor de Nómina Hondureña: Quincenal (50%) y Mensual (IHSS L. 11,903.13 y RAP 1.5%)</h3>
               <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                Procese la nómina del mes en un clic incluyendo <strong>bonos, préstamos, aumentos salariales y horas extras</strong>. Genera vouchers individuales listos para firma del trabajador con el desglose exacto exigido por la <strong>SETRASS</strong>.
+                Procese su <strong>1ra Quincena, 2da Quincena (50%) o Planilla Mensual (100%)</strong> en un clic incluyendo <strong>bonos, préstamos, aumentos salariales y horas extras (+25%, +50%, +75%, +100%)</strong>. Incluye <strong>Reporte General de Planilla Contable</strong> (ajustado al 100% de su pantalla con desglose de IHSS Salud EM, IHSS IVM, RAP y firmas de <em>Elaborado, Revisado y Autorizado</em>) y <strong>vouchers individuales</strong> con firma del empleado para auditorías de la <strong>SETRASS</strong>.
               </p>
             </div>
           </div>
           <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="font-semibold text-zkBlue">✓ Impresión de planilla completa y vouchers individuales</span>
+            <span class="font-semibold text-zkBlue">✓ Reporte contable general (100% pantalla) y vouchers individuales</span>
             <button type="button"
                     onclick="openLightbox('./Captura de pantalla (179).png', 'Parámetros de Nómina Editables: Techo Salarial IHSS (11,903.13), EM, IVM y RAP (1.5%)')"
                     class="font-bold text-zkGreen hover:underline">
@@ -467,7 +467,7 @@
 
         <!-- 5. Captura (175) -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (175).png', '5. Gestión de Nómina: Controles para Bonos, Préstamos, Horas Extras y Aumentos Salariales')">
+             onclick="openLightbox('./Captura de pantalla (175).png', '5. Gestión de Nómina: Controles para Modalidad Quincenal/Mensual, Bonos, Préstamos, Horas Extras y Aumentos')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (175).png" alt="Módulo de Nómina Inicial" class="group-hover:scale-105 transition-transform" />
           </div>
@@ -479,25 +479,25 @@
 
         <!-- 6. Captura (176) -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (176).png', '6. Planilla Calculada: Sueldo ordinario, horas extras calculadas, deducciones y neto a pagar')">
+             onclick="openLightbox('./Captura de pantalla (176).png', '6. Planilla Quincenal (50%) y Mensual (100%): Sueldo, horas extras, deducciones IHSS/RAP y Reporte General Contable')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (176).png" alt="Planilla Procesada" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
             <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 06</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Planilla Mensual Calculada</h4>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Planilla Quincenal y Mensual</h4>
           </div>
         </div>
 
         <!-- 7. Captura (177) -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (177).png', '7. Voucher de Pago: Recibo imprimible con firma de recibido y desglose IHSS/RAP')">
+             onclick="openLightbox('./Captura de pantalla (177).png', '7. Voucher Individual y Reporte General: Recibos con firma del trabajador y planilla contable con firmas de autorización')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (177).png" alt="Voucher de Pago Imprimible" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
             <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 07</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Voucher / Boleta Imprimible</h4>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Voucher y Reporte Contable</h4>
           </div>
         </div>
 
@@ -515,7 +515,7 @@
 
         <!-- 9. Captura (178) -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (178).png', '9. Integración Biométrica ZKTeco (IP + Puerto 4370) y Soporte Regional Centroamericano')">
+             onclick="openLightbox('./Captura de pantalla (178).png', '9. Integración Biométrica ZKTeco (IP + Puerto 4370) en Red Local LAN para Empresas en Honduras')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (178).png" alt="Integración Reloj Biométrico ZKTeco" class="group-hover:scale-105 transition-transform" />
           </div>
@@ -587,8 +587,8 @@
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Hasta 15 colaboradores activos</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Generación e impresión de Carnets con QR</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Marcaje por Lector QR USB + 1 Reloj ZKTeco</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Cálculo automático de IHSS, RAP y Horas Extras</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Vouchers de pago e impresión de planilla</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal (50%) y Mensual (IHSS, RAP y Extras)</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reporte contable general y vouchers individuales</li>
             </ul>
           </div>
 
@@ -631,8 +631,8 @@
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> <strong>Hasta 35 colaboradores activos</strong></li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Sincronización con hasta 3 Relojes ZKTeco en red</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Módulo completo de Lector QR USB, Huella y RFID</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Cálculo de IHSS, RAP, Bonos, Préstamos y Vacaciones</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Contraseña Maestra, respaldo local y soporte prioritario</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal/Mensual, IHSS, RAP, Bonos y Préstamos</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reporte general de planilla contable y Contraseña Maestra</li>
             </ul>
           </div>
 
@@ -670,8 +670,8 @@
             <ul class="mt-6 space-y-3 text-sm text-slate-600">
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Hasta 75 colaboradores activos</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Relojes biométricos ZKTeco y lectores QR ilimitados</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Gestión por departamentos y acciones de personal</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reportes y vouchers listos para auditoría SETRASS</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal (1ra/2da) y Mensual por departamento</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reporte contable general y vouchers listos para SETRASS</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Capacitación extendida para equipo contable</li>
             </ul>
           </div>
@@ -698,11 +698,17 @@
             <strong>Paquete PYME Inicio (L. 7,900)</strong> y <strong>Paquete Empresa Total (L. 14,500)</strong>: Dejamos instalado el sistema en su PC, enlazado con su reloj ZKTeco o lector QR USB, con sus empleados cargados y su personal capacitado en menos de 48 horas.
           </p>
         </div>
-        <a href="https://wa.me/50496447721?text=Hola%2C%20me%20interesa%20cotizar%20un%20Paquete%20Llave%20en%20Mano%20(desde%20L.%207%2C900)%20de%20HRMS%20Honduras%20con%20instalaci%C3%B3n%20y%20capacitaci%C3%B3n."
-           target="_blank" rel="noopener noreferrer"
-           class="shrink-0 inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-sm transition-all">
-          Cotizar Llave en Mano →
-        </a>
+        <div class="shrink-0 flex flex-col sm:flex-row gap-3">
+          <a href="cotizacion.html"
+             class="inline-flex items-center justify-center px-5 py-3.5 rounded-xl text-sm font-bold text-zkBlue bg-white border-2 border-zkBlue hover:bg-zkBlue hover:text-white shadow-sm transition-all">
+            📄 Ver Cotización Formal PDF
+          </a>
+          <a href="https://wa.me/50496447721?text=Hola%2C%20me%20interesa%20cotizar%20un%20Paquete%20Llave%20en%20Mano%20(desde%20L.%207%2C900)%20de%20HRMS%20Honduras%20con%20instalaci%C3%B3n%20y%20capacitaci%C3%B3n."
+             target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-sm transition-all">
+            Cotizar Llave en Mano →
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -750,12 +756,12 @@
         <!-- FAQ 3 -->
         <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
           <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
-            <span>3. ¿Cómo se actualiza el sistema ante futuros cambios en el salario mínimo o techos del IHSS/RAP?</span>
+            <span>3. ¿Cómo funciona el cálculo Quincenal (50%) vs. Mensual (100%) y la actualización de techos IHSS/RAP?</span>
             <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
           </summary>
           <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
             <p>
-              En la pestaña de <strong>Configuración → Parámetros de Nómina</strong>, su contador o administrador puede editar directamente el <strong>Techo Salarial del IHSS (actualmente L. 11,903.13)</strong>, los porcentajes de Enfermedad y Maternidad, Invalidez, Vejez y Muerte, y el porcentaje del <strong>RAP (1.5%)</strong> sin depender de soporte externo ni pagar por reprogramaciones.
+              En el módulo de Nómina puede alternar con un clic entre <strong>Planilla Quincenal (1ra o 2da Quincena al 50% de sueldo base y 50% de deducciones de ley)</strong> y <strong>Planilla Mensual (100%)</strong>, sumando las horas extras reales del período, bonos y préstamos. Además, en <strong>Configuración → Parámetros de Nómina</strong> puede actualizar en cualquier momento el <strong>Techo Salarial del IHSS (actualmente L. 11,903.13)</strong>, porcentajes de Salud (EM), Pensión (IVM) y <strong>RAP (1.5%)</strong>. El sistema genera tanto el <strong>Reporte General de Planilla Contable</strong> (ajustado al 100% de la pantalla con firmas de <em>Elaborado, Revisado y Autorizado</em>) como los vouchers individuales de pago.
             </p>
             <button type="button" onclick="openLightbox('./Captura de pantalla (179).png', 'Parámetros de Nómina Editables en HRMS Honduras')" class="text-xs font-bold text-zkGreen hover:underline">
               Ver captura de Parámetros Legales Editables →
