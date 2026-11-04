@@ -1,0 +1,971 @@
+﻿<!DOCTYPE html>
+<html lang="es-HN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HRMS Honduras | Software de Planilla, IHSS/RAP y Control BiomÃ©trico ZKTeco</title>
+  <meta name="description" content="HRMS Honduras: Sistema de escritorio Offline-first para Recursos Humanos, control de asistencia por QR/ZKTeco y cÃ¡lculo automatizado de planilla bajo la ley laboral de Honduras." />
+  
+  <!-- Web Icon / Favicon Oficial -->
+  <link rel="icon" type="image/png" href="./icon.png" />
+  <link rel="apple-touch-icon" href="./icon.png" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zkBlue: {
+              DEFAULT: '#002F6C',
+              dark: '#001F47',
+              light: '#E6ECF5'
+            },
+            zkGreen: {
+              DEFAULT: '#00A859',
+              hover: '#008F4C',
+              light: '#E6F6EE'
+            },
+            zkGray: '#F8F9FA'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Recorte elegante para ocultar la barra de tareas inferior de Windows en las capturas */
+    .app-screenshot-crop {
+      aspect-ratio: 16 / 9.4;
+      overflow: hidden;
+      position: relative;
+      background-color: #0f172a;
+    }
+    .app-screenshot-crop img {
+      width: 100%;
+      height: 106.5%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-zkBlue selection:text-white">
+
+  <!-- ==========================================
+       1. BARRA DE NAVEGACIÃ“N SUPERIOR (NAVBAR)
+       ========================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logotipo Oficial con icon.png -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <img src="./icon.png" alt="Logo HRMS Honduras" class="w-11 h-11 rounded-xl shadow-sm group-hover:scale-105 transition-transform object-contain" />
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight text-zkBlue leading-none">HRMS <span class="text-zkGreen">Honduras</span></span>
+          <span class="text-[11px] font-semibold text-slate-500 tracking-wider uppercase mt-0.5">Planilla â€¢ IHSS/RAP â€¢ ZKTeco</span>
+        </div>
+      </a>
+
+      <!-- Enlaces de NavegaciÃ³n (Escritorio) -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
+        <a href="#inicio" class="hover:text-zkBlue transition-colors">Inicio</a>
+        <a href="#beneficios" class="hover:text-zkBlue transition-colors">Beneficios</a>
+        <a href="#capturas" class="hover:text-zkBlue transition-colors">MÃ³dulos en Vivo</a>
+        <a href="#precios" class="hover:text-zkBlue transition-colors">Precios</a>
+        <a href="#faqs" class="hover:text-zkBlue transition-colors">FAQs</a>
+      </nav>
+
+      <!-- CTA Destacado -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20probar%20la%20demo%20para%20automatizar%20mi%20planilla%20y%20asistencia."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-sm transition-all">
+          <span>Probar Demo</span>
+          <span class="text-xs bg-white/20 px-2 py-0.5 rounded">+504 9644-7721</span>
+        </a>
+      </div>
+
+      <!-- BotÃ³n MenÃº MÃ³vil -->
+      <button id="mobile-menu-btn" aria-label="Abrir menÃº" class="md:hidden p-2 rounded-lg text-zkBlue hover:bg-slate-100">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- MenÃº Desplegable MÃ³vil -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-3">
+      <a href="#inicio" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Inicio</a>
+      <a href="#beneficios" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Beneficios</a>
+      <a href="#capturas" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">MÃ³dulos en Vivo</a>
+      <a href="#precios" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Precios</a>
+      <a href="#faqs" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">FAQs</a>
+      <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20probar%20la%20demo."
+         target="_blank" rel="noopener noreferrer"
+         class="block w-full text-center py-2.5 rounded-lg text-sm font-bold text-white bg-zkGreen">
+        Probar Demo (WhatsApp 9644-7721)
+      </a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       2. SECCIÃ“N PRINCIPAL (HERO SECTION)
+       ========================================== -->
+  <section id="inicio" class="relative bg-white py-12 lg:py-20 overflow-hidden">
+    <!-- Fondo decorativo sutil con hr_hero.jpg en baja opacidad -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.035]">
+      <img src="./hr_hero.jpg" alt="" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        
+        <!-- Columna Izquierda: Propuesta de Valor y ConversiÃ³n -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zkGreen-light border border-zkGreen/30">
+            <img src="./icon.png" alt="Icono HRMS Honduras" class="w-4 h-4 rounded-sm" />
+            <span class="text-xs font-bold uppercase tracking-wider text-zkGreen">Software Oficial para PYMEs de Honduras</span>
+          </div>
+
+          <h1 class="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-zkBlue leading-[1.2] tracking-tight">
+            Automatice sus deducciones de IHSS/RAP sin errores y descargue las marcas de sus relojes ZKTeco directamente a la planilla en 5 segundos, sin usar memorias USB.
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+            <strong>HRMS Honduras</strong> se instala directamente en la PC de su oficina con arquitectura <strong>Offline-first</strong>. Sus sueldos, contratos y expedientes quedan <strong>100% privados en su equipo local</strong>, eliminando pagos mensuales en la nube y funcionando incluso sin internet.
+          </p>
+
+          <!-- Botones de AcciÃ³n Principales -->
+          <div class="pt-1 flex flex-col sm:flex-row gap-4">
+            <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20agendar%20una%20demo%20para%20automatizar%20mi%20planilla%20y%20asistencia."
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-base font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-md hover:shadow-lg transition-all">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+              </svg>
+              Agendar Demo (9644-7721)
+            </a>
+            <a href="#precios"
+               class="inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-bold text-white bg-zkBlue hover:bg-zkBlue-dark shadow-md transition-all">
+              Ver Planes y Precios
+            </a>
+          </div>
+
+          <!-- Sellos de Confianza TÃ©cnica -->
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-slate-200 text-xs font-semibold text-slate-600">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
+              <span>Techo IHSS L. 11,903.13 listo</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
+              <span>Enlace ZKTeco Puerto 4370</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
+              <span>Marcaje con Lector QR USB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Capturas Reales Interactivas del Sistema -->
+        <div class="lg:col-span-6">
+          <div class="bg-slate-900 border-2 border-slate-200 rounded-2xl shadow-xl overflow-hidden">
+            <!-- Barra Superior del Visor del Sistema -->
+            <div class="bg-zkBlue px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <img src="./icon.png" alt="Icono" class="w-5 h-5 rounded" />
+                <span class="text-xs font-bold text-white">HRMS Honduras â€” Capturas Reales del Sistema</span>
+              </div>
+              <span class="px-2.5 py-0.5 text-[10px] font-extrabold bg-zkGreen text-white rounded-full uppercase tracking-wider">
+                100% Funcional Offline
+              </span>
+            </div>
+
+            <!-- PestaÃ±as RÃ¡pidas para cambiar la captura del Hero -->
+            <div class="bg-slate-100 px-3 py-2 border-b border-slate-200 flex flex-wrap gap-1.5 text-xs font-bold">
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (176).png', 'NÃ³mina Procesada en Lempiras: Sueldo ordinario, horas extras, bonos y deducciones IHSS/RAP.', this)"
+                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-zkBlue text-white transition-all">
+                1. Planilla Calculada
+              </button>
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (177).png', 'Voucher / Boleta de Pago lista para imprimir con desglose legal de IHSS (EM/IVM) y RAP.', this)"
+                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                2. Boleta de Pago
+              </button>
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (173).png', 'Control de Asistencia: Marcaje por Reloj ZKTeco en Red, CÃ³digo QR USB, Huella USB o RFID.', this)"
+                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                3. Asistencia ZKTeco/QR
+              </button>
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (181).png', 'Panel Principal (Dashboard) de HRMS Honduras con sus 5 mÃ³dulos integrados.', this)"
+                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                4. Dashboard Principal
+              </button>
+            </div>
+
+            <!-- Imagen Principal con recorte de barra de tareas y clic para ampliar -->
+            <div class="app-screenshot-crop cursor-zoom-in group" onclick="openLightbox(document.getElementById('hero-main-img').src, document.getElementById('hero-main-caption').innerText)">
+              <img id="hero-main-img" src="./Captura de pantalla (176).png" alt="Captura real de NÃ³mina en HRMS Honduras" class="transition-transform duration-300 group-hover:scale-[1.01]" />
+              <div class="absolute bottom-3 right-3 bg-zkBlue/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg shadow flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>
+                </svg>
+                <span>Clic para ampliar captura</span>
+              </div>
+            </div>
+
+            <!-- Pie explicativo de la captura activa -->
+            <div class="bg-white px-4 py-3 border-t border-slate-200 flex items-center justify-between gap-4">
+              <p id="hero-main-caption" class="text-xs font-semibold text-slate-700">
+                NÃ³mina Procesada en Lempiras: Sueldo ordinario, horas extras, bonos y deducciones IHSS/RAP.
+              </p>
+              <a href="#capturas" class="shrink-0 text-xs font-extrabold text-zkGreen hover:underline">
+                Ver las 10 capturas â†’
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       BANNER VISUAL EJECUTIVO (shutterstock_2703928353.jpg + hr_hero.jpg)
+       ========================================== -->
+  <section class="bg-zkBlue text-white py-10 border-y border-zkBlue-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-2">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-zkGreen">DiseÃ±ado para Empresas de 10 a 75 Empleados</span>
+          <h2 class="text-xl sm:text-2xl font-extrabold">
+            TecnologÃ­a de Nivel Corporativo al Alcance de las PYMEs de Honduras
+          </h2>
+          <p class="text-sm text-white/80 leading-relaxed">
+            Desde agroindustrias, talleres, clÃ­nicas y ferreterÃ­as hasta distribuidoras comerciales: controle entradas, permisos, vacaciones, prÃ©stamos y planillas en Lempiras desde un solo lugar.
+          </p>
+        </div>
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+          <div class="relative rounded-xl overflow-hidden border border-white/15 h-28 shadow-md">
+            <img src="./shutterstock_2703928353.jpg" alt="GestiÃ³n de Talento Humano" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-zkBlue/90 via-zkBlue/30 to-transparent flex items-end p-3">
+              <span class="text-xs font-bold text-white">GestiÃ³n Integral RRHH</span>
+            </div>
+          </div>
+          <div class="relative rounded-xl overflow-hidden border border-white/15 h-28 shadow-md">
+            <img src="./hr_hero.jpg" alt="Red Conectada ZKTeco" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-zkBlue/90 via-zkBlue/30 to-transparent flex items-end p-3">
+              <span class="text-xs font-bold text-white">Conectividad Red Local</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3. CUADRÃCULA DE BENEFICIOS CON CAPTURAS ESTRATÃ‰GICAS
+       ========================================== -->
+  <section id="beneficios" class="bg-zkGray py-20 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">4 Pilares TecnolÃ³gicos</span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-zkBlue">
+          Conozca por dentro cada MÃ³dulo de HRMS Honduras
+        </h2>
+        <p class="mt-3 text-slate-600 text-base">
+          Haga clic sobre cualquiera de las capturas reales para inspeccionar en alta resoluciÃ³n cada pantalla del sistema.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- TARJETA 1: EXPEDIENTE, ACCIONES Y CARNETS -> Capturas (172) y (174) -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./Captura de pantalla (172).png', 'MÃ³dulo 01: Directorio de Empleados, Salarios en Lempiras y Expediente Digital')">
+              <img src="./Captura de pantalla (172).png" alt="Directorio de Empleados en HRMS Honduras" />
+              <span class="absolute top-3 left-3 bg-zkBlue text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
+                MÃ³dulo 01 â€¢ Directorio y Carnets
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">Expediente Digital, Acciones de Personal y Carnets</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                Administre el directorio completo de colaboradores con su departamento, puesto, salario en Lempiras y estado activo. Registre <strong>permisos, vacaciones, sanciones e incapacidades</strong> y genere carnets corporativos listos para imprimir con fotografÃ­a y QR.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-semibold text-zkBlue">âœ“ Incluye registro de Vacaciones y Permisos</span>
+            <button type="button"
+                    onclick="openLightbox('./Captura de pantalla (174).png', 'Registro de AcciÃ³n Personal: Asistencia, Permisos, Vacaciones y Sanciones con datos de Empresa y RTN')"
+                    class="font-bold text-zkGreen hover:underline">
+              Ver pantalla de Acciones â†’
+            </button>
+          </div>
+        </article>
+
+        <!-- TARJETA 2: CONTROL POR QR / MULTI-MARCADOR -> Captura (173) -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./Captura de pantalla (173).png', 'MÃ³dulo 02: Control de Asistencia con 5 mÃ©todos: Manual, Reloj ZKTeco, Lector USB, RFID/Tarjeta y CÃ³digo QR')">
+              <img src="./Captura de pantalla (173).png" alt="Control de Asistencia por CÃ³digo QR y Lector USB" />
+              <span class="absolute top-3 left-3 bg-zkGreen text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
+                MÃ³dulo 02 â€¢ Marcaje QR y Multi-Lector
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">Control de Asistencia por CÃ³digo QR, Huella USB y RFID</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                Sistema de marcaje sin contacto mediante el <strong>cÃ³digo QR impreso en el carnet</strong> del empleado. Conecte un lector QR estÃ¡ndar directo al puerto USB de su PC (sin costos ni licencias adicionales), o utilice lectores de huella USB y tarjetas RFID.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-semibold text-zkBlue">âœ“ 5 modos de marcaje integrados en pantalla</span>
+            <button type="button"
+                    onclick="openLightbox('./Captura de pantalla (173).png', 'Control de Asistencia en Tiempo Real')"
+                    class="font-bold text-zkGreen hover:underline">
+              Ampliar captura â†’
+            </button>
+          </div>
+        </article>
+
+        <!-- TARJETA 3: SINCRONIZACIÃ“N ZKTECO TCP/IP -> Captura (178) -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./Captura de pantalla (178).png', 'MÃ³dulo 03: IntegraciÃ³n Nativa TCP/IP con Reloj BiomÃ©trico ZKTeco / Hikvision (Puerto 4370)')">
+              <img src="./Captura de pantalla (178).png" alt="ConfiguraciÃ³n de Reloj BiomÃ©trico ZKTeco TCP/IP" />
+              <span class="absolute top-3 left-3 bg-zkBlue text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
+                MÃ³dulo 03 â€¢ Enlace Directo ZKTeco
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">SincronizaciÃ³n Nativa con Relojes ZKTeco por Red (TCP/IP)</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                OlvÃ­dese de extraer archivos en memorias USB. Configure la <strong>DirecciÃ³n IP de su reloj (ej. `192.168.1.201`) y el puerto TCP `4370`</strong> para descargar las marcas de entrada/salida y calcular horas extras en 5 segundos.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-semibold text-zkBlue">âœ“ Compatible con ZKTeco y Hikvision en red LAN</span>
+            <button type="button"
+                    onclick="openLightbox('./Captura de pantalla (178).png', 'ConfiguraciÃ³n de DirecciÃ³n IP y Puerto 4370 para Relojes ZKTeco')"
+                    class="font-bold text-zkGreen hover:underline">
+              Ampliar configuraciÃ³n â†’
+            </button>
+          </div>
+        </article>
+
+        <!-- TARJETA 4: MOTOR DE NÃ“MINA HONDUREÃ‘A -> Capturas (176) y (177) -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./Captura de pantalla (177).png', 'MÃ³dulo 04: Voucher de Pago Oficial con desglose de Horas Extras (+25%), IHSS Salud (EM), IHSS Pensiones (IVM) y RAP')">
+              <img src="./Captura de pantalla (177).png" alt="Voucher de Pago con IHSS y RAP en HRMS Honduras" />
+              <span class="absolute top-3 left-3 bg-zkGreen text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
+                MÃ³dulo 04 â€¢ Planilla Ley HondureÃ±a
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">Motor de NÃ³mina HondureÃ±a (IHSS L. 11,903.13 y RAP 1.5%)</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                Procese la nÃ³mina del mes en un clic incluyendo <strong>bonos, prÃ©stamos, aumentos salariales y horas extras</strong>. Genera vouchers individuales listos para firma del trabajador con el desglose exacto exigido por la <strong>SETRASS</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-semibold text-zkBlue">âœ“ ImpresiÃ³n de planilla completa y vouchers individuales</span>
+            <button type="button"
+                    onclick="openLightbox('./Captura de pantalla (179).png', 'ParÃ¡metros de NÃ³mina Editables: Techo Salarial IHSS (11,903.13), EM, IVM y RAP (1.5%)')"
+                    class="font-bold text-zkGreen hover:underline">
+              Ver parÃ¡metros IHSS/RAP â†’
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3.5 GALERÃA COMPLETA DE LAS 10 CAPTURAS REALES DEL SISTEMA
+       ========================================== -->
+  <section id="capturas" class="bg-white py-20 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">Transparencia Total de Punta a Punta</span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-zkBlue">
+          Recorrido Visual por las 10 Pantallas de HRMS Honduras
+        </h2>
+        <p class="mt-3 text-slate-600 text-sm sm:text-base">
+          Inspeccione cada detalle de la interfaz antes de agendar su demostraciÃ³n. Haga clic en cualquier imagen para verla en tamaÃ±o completo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        
+        <!-- 1. Captura (181) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (181).png', '1. Panel Principal (Dashboard): Vista ejecutiva de los 5 mÃ³dulos activos')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (181).png" alt="Panel Principal Dashboard" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 01</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Panel Principal (Dashboard)</h4>
+          </div>
+        </div>
+
+        <!-- 2. Captura (172) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (172).png', '2. Directorio de Empleados: GestiÃ³n de puestos, departamentos y sueldos en Lempiras')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (172).png" alt="Directorio de Empleados" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 02</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Directorio de Empleados</h4>
+          </div>
+        </div>
+
+        <!-- 3. Captura (173) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (173).png', '3. Control de Asistencia: Reloj en vivo con marcaje ZKTeco, QR USB, Huella y RFID')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (173).png" alt="Control de Asistencia" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 03</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Asistencia ZKTeco y QR</h4>
+          </div>
+        </div>
+
+        <!-- 4. Captura (174) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (174).png', '4. Solicitudes y Acciones: Registro de permisos, vacaciones, sanciones y datos de empresa')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (174).png" alt="Solicitudes y Acciones de Personal" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 04</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Acciones de Personal y RTN</h4>
+          </div>
+        </div>
+
+        <!-- 5. Captura (175) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (175).png', '5. GestiÃ³n de NÃ³mina: Controles para Bonos, PrÃ©stamos, Horas Extras y Aumentos Salariales')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (175).png" alt="MÃ³dulo de NÃ³mina Inicial" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 05</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Bonos, PrÃ©stamos y Extras</h4>
+          </div>
+        </div>
+
+        <!-- 6. Captura (176) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (176).png', '6. Planilla Calculada: Sueldo ordinario, horas extras calculadas, deducciones y neto a pagar')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (176).png" alt="Planilla Procesada" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 06</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Planilla Mensual Calculada</h4>
+          </div>
+        </div>
+
+        <!-- 7. Captura (177) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (177).png', '7. Voucher de Pago: Recibo imprimible con firma de recibido y desglose IHSS/RAP')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (177).png" alt="Voucher de Pago Imprimible" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 07</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Voucher / Boleta Imprimible</h4>
+          </div>
+        </div>
+
+        <!-- 8. Captura (179) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (179).png', '8. ParÃ¡metros Legales de Honduras: Techo Salarial IHSS (L. 11,903.13) y RAP (1.5%) editables')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (179).png" alt="ParÃ¡metros de NÃ³mina IHSS y RAP" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 08</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Techos IHSS y RAP Editables</h4>
+          </div>
+        </div>
+
+        <!-- 9. Captura (178) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (178).png', '9. IntegraciÃ³n BiomÃ©trica ZKTeco (IP + Puerto 4370) y Soporte Regional Centroamericano')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (178).png" alt="IntegraciÃ³n Reloj BiomÃ©trico ZKTeco" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 09</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">ConexiÃ³n IP Reloj ZKTeco</h4>
+          </div>
+        </div>
+
+        <!-- 10. Captura (180) -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (180).png', '10. Seguridad Local: ContraseÃ±a Maestra activa y ExportaciÃ³n de Base de Datos Offline')">
+          <div class="app-screenshot-crop">
+            <img src="./Captura de pantalla (180).png" alt="Seguridad y Respaldo de Base de Datos" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 10</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">ContraseÃ±a Maestra y Backup</h4>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. MATRIZ DE PRECIOS TRANSPARENTE
+       ========================================== -->
+  <section id="precios" class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">InversiÃ³n Clara y Sin Sorpresas</span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-zkBlue">
+          Planes de Licenciamiento de HRMS Honduras
+        </h2>
+        <p class="mt-3 text-slate-600 text-base">
+          Elija entre modalidades Semestral, Anual o adquiera su Licencia Perpetua de pago Ãºnico. Todos los planes incluyen todos los mÃ³dulos.
+        </p>
+      </div>
+
+      <!-- Grid de 3 Columnas de Precios -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+
+        <!-- PLAN 1: EMPRENDEDOR -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-extrabold text-zkBlue">Plan Emprendedor</h3>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Hasta 15 Empleados</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-500">Ideal para comercios, clÃ­nicas, restaurantes y oficinas en crecimiento.</p>
+
+            <div class="mt-6 space-y-3 bg-zkGray p-4 rounded-xl border border-slate-200">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-slate-600">Licencia Semestral:</span>
+                <span class="font-extrabold text-zkBlue text-base">L. 3,900</span>
+              </div>
+              <div class="flex justify-between items-center text-sm border-t border-slate-200 pt-2.5">
+                <span class="font-medium text-slate-600">Licencia Anual (Ahorre 15%):</span>
+                <span class="font-extrabold text-zkBlue text-base">L. 6,600</span>
+              </div>
+              <div class="flex justify-between items-center text-sm border-t border-slate-200 pt-2.5">
+                <span class="font-bold text-zkGreen">Licencia Perpetua (Pago Ãšnico):</span>
+                <span class="font-extrabold text-zkGreen text-lg">L. 12,900</span>
+              </div>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-600">
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> Hasta 15 colaboradores activos</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> GeneraciÃ³n e impresiÃ³n de Carnets con QR</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> Marcaje por Lector QR USB + 1 Reloj ZKTeco</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> CÃ¡lculo automÃ¡tico de IHSS, RAP y Horas Extras</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> Vouchers de pago e impresiÃ³n de planilla</li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/50496447721?text=Hola%2C%20me%20interesa%20el%20Plan%20Emprendedor%20(hasta%2015%20empleados)%20de%20HRMS%20Honduras."
+             target="_blank" rel="noopener noreferrer"
+             class="mt-8 block w-full py-3.5 px-5 rounded-xl text-center text-sm font-bold text-zkBlue bg-zkBlue-light hover:bg-zkBlue hover:text-white transition-colors">
+            Elegir Plan Emprendedor
+          </a>
+        </div>
+
+        <!-- PLAN 2: PYME PRO (DESTACADO - MÃS VENDIDA) -->
+        <div class="relative rounded-2xl border-2 border-zkGreen bg-white p-8 shadow-lg flex flex-col justify-between lg:-translate-y-2">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-zkGreen text-white text-xs font-extrabold uppercase tracking-wider px-4 py-1.5 rounded-full shadow">
+            â˜… MÃ¡s Vendida en Honduras
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-extrabold text-zkBlue">Plan PYME Pro</h3>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-zkGreen-light text-zkGreen">Hasta 35 Empleados</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-500">DiseÃ±ado a la medida de empresas de 10 a 35 empleados con turnos y horas extras.</p>
+
+            <div class="mt-6 space-y-3 bg-zkGreen-light/50 p-4 rounded-xl border border-zkGreen/30">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-slate-700">Licencia Semestral:</span>
+                <span class="font-extrabold text-zkBlue text-base">L. 5,900</span>
+              </div>
+              <div class="flex justify-between items-center text-sm border-t border-zkGreen/20 pt-2.5">
+                <span class="font-medium text-slate-700">Licencia Anual (Ahorre 18%):</span>
+                <span class="font-extrabold text-zkBlue text-base">L. 9,700</span>
+              </div>
+              <div class="flex justify-between items-center text-sm border-t border-zkGreen/20 pt-2.5">
+                <span class="font-bold text-zkGreen">Licencia Perpetua (Pago Ãšnico):</span>
+                <span class="font-extrabold text-zkGreen text-lg">L. 18,500</span>
+              </div>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> <strong>Hasta 35 colaboradores activos</strong></li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> SincronizaciÃ³n con hasta 3 Relojes ZKTeco en red</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> MÃ³dulo completo de Lector QR USB, Huella y RFID</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> CÃ¡lculo de IHSS, RAP, Bonos, PrÃ©stamos y Vacaciones</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> ContraseÃ±a Maestra, respaldo local y soporte prioritario</li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/50496447721?text=Hola%2C%20me%20interesa%20el%20Plan%20PYME%20Pro%20(hasta%2035%20empleados)%20de%20HRMS%20Honduras."
+             target="_blank" rel="noopener noreferrer"
+             class="mt-8 block w-full py-3.5 px-5 rounded-xl text-center text-sm font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-md transition-colors">
+            Solicitar Plan PYME Pro
+          </a>
+        </div>
+
+        <!-- PLAN 3: EMPRESA -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-extrabold text-zkBlue">Plan Empresa</h3>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Hasta 75 Empleados</span>
+            </div>
+            <p class="mt-2 text-sm text-slate-500">Para operaciones industriales, agroindustrias y empresas multi-departamento.</p>
+
+            <div class="mt-6 space-y-3 bg-zkGray p-4 rounded-xl border border-slate-200">
+              <div class="flex justify-between items-center text-sm">
+                <span class="font-medium text-slate-600">Licencia Semestral:</span>
+                <span class="font-extrabold text-zkBlue text-base">L. 8,900</span>
+              </div>
+              <div class="flex justify-between items-center text-sm border-t border-slate-200 pt-2.5">
+                <span class="font-medium text-slate-600">Licencia Anual (Ahorre 20%):</span>
+                <span class="font-extrabold text-zkBlue text-base">L. 14,200</span>
+              </div>
+              <div class="flex justify-between items-center text-sm border-t border-slate-200 pt-2.5">
+                <span class="font-bold text-zkGreen">Licencia Perpetua (Pago Ãšnico):</span>
+                <span class="font-extrabold text-zkGreen text-lg">L. 26,900</span>
+              </div>
+            </div>
+
+            <ul class="mt-6 space-y-3 text-sm text-slate-600">
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> Hasta 75 colaboradores activos</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> Relojes biomÃ©tricos ZKTeco y lectores QR ilimitados</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> GestiÃ³n por departamentos y acciones de personal</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> Reportes y vouchers listos para auditorÃ­a SETRASS</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">âœ“</span> CapacitaciÃ³n extendida para equipo contable</li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/50496447721?text=Hola%2C%20me%20interesa%20el%20Plan%20Empresa%20(hasta%2075%20empleados)%20de%20HRMS%20Honduras."
+             target="_blank" rel="noopener noreferrer"
+             class="mt-8 block w-full py-3.5 px-5 rounded-xl text-center text-sm font-bold text-zkBlue bg-zkBlue-light hover:bg-zkBlue hover:text-white transition-colors">
+            Elegir Plan Empresa
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Nota Destacada: Paquetes "Llave en Mano" -->
+      <div class="mt-12 rounded-2xl bg-zkGray border-2 border-dashed border-zkBlue/30 p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zkBlue text-white text-xs font-bold uppercase">
+            ImplementaciÃ³n Integral Llave en Mano
+          </div>
+          <h4 class="text-lg sm:text-xl font-extrabold text-zkBlue">
+            Paquetes "Llave en Mano" (InstalaciÃ³n + ConfiguraciÃ³n + CapacitaciÃ³n): Desde <span class="text-zkGreen">L. 7,900</span>
+          </h4>
+          <p class="text-sm text-slate-600">
+            <strong>Paquete PYME Inicio (L. 7,900)</strong> y <strong>Paquete Empresa Total (L. 14,500)</strong>: Dejamos instalado el sistema en su PC, enlazado con su reloj ZKTeco o lector QR USB, con sus empleados cargados y su personal capacitado en menos de 48 horas.
+          </p>
+        </div>
+        <a href="https://wa.me/50496447721?text=Hola%2C%20me%20interesa%20cotizar%20un%20Paquete%20Llave%20en%20Mano%20(desde%20L.%207%2C900)%20de%20HRMS%20Honduras%20con%20instalaci%C3%B3n%20y%20capacitaci%C3%B3n."
+           target="_blank" rel="noopener noreferrer"
+           class="shrink-0 inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-sm transition-all">
+          Cotizar Llave en Mano â†’
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. SECCIÃ“N DE PREGUNTAS FRECUENTES (FAQs)
+       ========================================== -->
+  <section id="faqs" class="bg-zkGray py-20 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">Respuestas TÃ©cnicas y Legales</span>
+        <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-zkBlue">
+          Preguntas Frecuentes de Gerentes y Contadores en Honduras
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all" open>
+          <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
+            <span>1. Â¿QuÃ© requisitos mÃ­nimos de hardware necesito para instalar HRMS Honduras?</span>
+            <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+            No necesita servidores dedicados ni equipos costosos. <strong>HRMS Honduras</strong> estÃ¡ optimizado para funcionar con total fluidez en cualquier PC o laptop estÃ¡ndar de oficina con <strong>Windows 10 o Windows 11 (64 bits), 4 GB de memoria RAM</strong>, procesador Intel Core i3 / AMD Ryzen 3 (o equivalente) y 500 MB de espacio libre en disco.
+          </p>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
+          <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
+            <span>2. Â¿CuÃ¡l es la mecÃ¡nica exacta del marcaje por CÃ³digo QR mediante lector USB?</span>
+            <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
+          </summary>
+          <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
+            <p>
+              Desde el sistema usted imprime el carnet de cada empleado con su fotografÃ­a y un cÃ³digo QR Ãºnico. Al conectar cualquier lector de cÃ³digos QR estÃ¡ndar por puerto USB a la PC, el empleado simplemente acerca su carnet al lector al entrar o salir: el sistema valida su identidad en menos de 1 segundo y envÃ­a las horas trabajadas directamente al cÃ¡lculo de la planilla.
+            </p>
+            <button type="button" onclick="openLightbox('./Captura de pantalla (173).png', 'Selector de Marcador por CÃ³digo QR USB y Reloj ZKTeco')" class="text-xs font-bold text-zkGreen hover:underline">
+              Ver captura del mÃ³dulo de marcaje QR â†’
+            </button>
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
+          <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
+            <span>3. Â¿CÃ³mo se actualiza el sistema ante futuros cambios en el salario mÃ­nimo o techos del IHSS/RAP?</span>
+            <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
+          </summary>
+          <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
+            <p>
+              En la pestaÃ±a de <strong>ConfiguraciÃ³n â†’ ParÃ¡metros de NÃ³mina</strong>, su contador o administrador puede editar directamente el <strong>Techo Salarial del IHSS (actualmente L. 11,903.13)</strong>, los porcentajes de Enfermedad y Maternidad, Invalidez, Vejez y Muerte, y el porcentaje del <strong>RAP (1.5%)</strong> sin depender de soporte externo ni pagar por reprogramaciones.
+            </p>
+            <button type="button" onclick="openLightbox('./Captura de pantalla (179).png', 'ParÃ¡metros de NÃ³mina Editables en HRMS Honduras')" class="text-xs font-bold text-zkGreen hover:underline">
+              Ver captura de ParÃ¡metros Legales Editables â†’
+            </button>
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
+          <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
+            <span>4. Â¿CÃ³mo se garantiza la privacidad absoluta del sistema al ser 100% Offline?</span>
+            <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
+          </summary>
+          <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
+            <p>
+              Toda la informaciÃ³n salarial y personal se guarda exclusivamente en la computadora de su empresa, nunca en servidores de terceros en internet. AdemÃ¡s, <strong>HRMS Honduras</strong> cuenta con bloqueo por <strong>ContraseÃ±a Maestra</strong> al iniciar la aplicaciÃ³n y un botÃ³n de <strong>Exportar Base de Datos</strong> para que conserve respaldos locales seguros en segundos.
+            </p>
+            <button type="button" onclick="openLightbox('./Captura de pantalla (180).png', 'Seguridad por ContraseÃ±a Maestra y ExportaciÃ³n de Base de Datos Local')" class="text-xs font-bold text-zkGreen hover:underline">
+              Ver captura de Seguridad y Respaldo Local â†’
+            </button>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. FORMULARIO DE CAPTURA FINAL (LEAD GEN)
+       ========================================== -->
+  <section id="contacto" class="relative bg-zkBlue py-20 text-white overflow-hidden">
+    <!-- Imagen corporativa shutterstock_2703928353.jpg integrada sutilmente en el fondo -->
+    <div class="absolute inset-0 pointer-events-none opacity-10">
+      <img src="./shutterstock_2703928353.jpg" alt="" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-zkGreen text-white text-xs font-bold uppercase tracking-wider">
+            <span>AtenciÃ³n Directa en Honduras</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
+            Solicite una DemostraciÃ³n en Vivo de 15 Minutos para su Empresa
+          </h2>
+          <p class="text-white/85 text-sm sm:text-base leading-relaxed">
+            Complete sus datos y le contactaremos de inmediato al WhatsApp o telÃ©fono indicado para mostrarle cÃ³mo <strong>HRMS Honduras</strong> descarga marcas ZKTeco y calcula su planilla real.
+          </p>
+          <ul class="space-y-2.5 text-sm text-white/90 pt-2">
+            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">âœ“</span> DemostraciÃ³n por Zoom o Microsoft Teams en 15 minutos</li>
+            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">âœ“</span> LÃ­nea directa de WhatsApp Corporativo: <strong>+504 9644-7721</strong></li>
+            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">âœ“</span> InstalaciÃ³n disponible en todo Honduras</li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-6">
+          <form id="lead-form" class="bg-white text-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-4">
+            <div class="flex items-center gap-3 pb-2 border-b border-slate-100">
+              <img src="./icon.png" alt="HRMS Honduras" class="w-9 h-9 rounded-lg" />
+              <div>
+                <h3 class="text-lg font-extrabold text-zkBlue leading-tight">Agende su Demo Ejecutiva</h3>
+                <p class="text-xs text-slate-500">Respuesta inmediata vÃ­a WhatsApp (+504 9644-7721)</p>
+              </div>
+            </div>
+            
+            <div>
+              <label for="nombre" class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre Completo *</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Ej. Lic. Carlos Roberto Pineda"
+                     class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-zkBlue" />
+            </div>
+
+            <div>
+              <label for="empresa" class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre de la Empresa *</label>
+              <input type="text" id="empresa" name="empresa" required placeholder="Ej. Agroindustrias Portal del Granero"
+                     class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-zkBlue" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="empleados" class="block text-xs font-bold uppercase text-slate-600 mb-1">NÃºmero de Empleados *</label>
+                <select id="empleados" name="empleados" required
+                        class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-zkBlue">
+                  <option value="1 a 15 empleados">1 a 15 empleados</option>
+                  <option value="16 a 35 empleados" selected>16 a 35 empleados</option>
+                  <option value="36 a 75 empleados">36 a 75 empleados</option>
+                  <option value="MÃ¡s de 75 empleados">MÃ¡s de 75 empleados</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="celular" class="block text-xs font-bold uppercase text-slate-600 mb-1">Celular / WhatsApp *</label>
+                <input type="tel" id="celular" name="celular" required placeholder="+504 9999-9999"
+                       class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-zkBlue" />
+              </div>
+            </div>
+
+            <button type="submit"
+                    class="w-full py-4 px-6 rounded-xl text-sm sm:text-base font-extrabold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-md transition-all">
+              Solicitar DemostraciÃ³n Sin Compromiso
+            </button>
+
+            <p class="text-[11px] text-center text-slate-500">
+              Sus datos estÃ¡n protegidos y solo se utilizarÃ¡n para coordinar su demostraciÃ³n de HRMS Honduras.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de PÃ¡gina -->
+  <footer class="bg-zkBlue-dark text-white/75 py-8 text-xs border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="./icon.png" alt="Logo HRMS Honduras" class="w-7 h-7 rounded-md" />
+        <p>Â© 2026 <strong>HRMS Honduras</strong>. Sistema de Recursos Humanos, Control de Asistencia y Planilla para Honduras.</p>
+      </div>
+      <p class="font-semibold text-white">WhatsApp Comercial: +504 9644-7721 â€¢ Cobertura Nacional</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       7. BOTÃ“N FLOTANTE PERMANENTE DE WHATSAPP (9644-7721)
+       ========================================== -->
+  <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20agendar%20una%20demo%20para%20automatizar%20mi%20planilla%20y%20asistencia."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Contactar por WhatsApp al 9644-7721"
+     class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 bg-zkGreen hover:bg-zkGreen-hover text-white font-bold px-5 py-3.5 rounded-full shadow-2xl hover:scale-105 transition-transform">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+    </svg>
+    <span class="text-sm">WhatsApp: 9644-7721</span>
+  </a>
+
+  <!-- ==========================================
+       8. MODAL LIGHTBOX PARA AMPLIAR CAPTURAS
+       ========================================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center" onclick="closeLightbox()">
+    <div class="relative max-w-6xl w-full bg-slate-900 rounded-2xl border border-white/15 overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+      <div class="bg-zkBlue px-5 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img src="./icon.png" alt="Icono" class="w-5 h-5 rounded" />
+          <p id="lightbox-caption" class="text-xs sm:text-sm font-bold text-white"></p>
+        </div>
+        <button type="button" onclick="closeLightbox()" class="text-white/80 hover:text-white font-extrabold text-sm px-3 py-1 rounded bg-white/10">
+          Cerrar âœ•
+        </button>
+      </div>
+      <div class="app-screenshot-crop bg-slate-950">
+        <img id="lightbox-img" src="" alt="Vista ampliada de HRMS Honduras" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts de Interactividad -->
+  <script>
+    // MenÃº MÃ³vil
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Selector de Capturas en el Hero
+    function setHeroShot(src, caption, btnEl) {
+      document.getElementById('hero-main-img').src = src;
+      document.getElementById('hero-main-caption').innerText = caption;
+      document.querySelectorAll('.hero-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-zkBlue', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+      btnEl.classList.remove('bg-white', 'text-slate-700');
+      btnEl.classList.add('bg-zkBlue', 'text-white');
+    }
+
+    // Lightbox para ver capturas en grande
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightbox-modal');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').innerText = caption;
+      modal.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // EnvÃ­o del formulario directo al WhatsApp +504 9644-7721
+    const leadForm = document.getElementById('lead-form');
+    leadForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const empresa = document.getElementById('empresa').value.trim();
+      const empleados = document.getElementById('empleados').value;
+      const celular = document.getElementById('celular').value.trim();
+
+      const mensaje = `Hola, solicito una DemostraciÃ³n Sin Compromiso de *HRMS Honduras*.%0A%0A` +
+                      `â€¢ *Nombre:* ${encodeURIComponent(nombre)}%0A` +
+                      `â€¢ *Empresa:* ${encodeURIComponent(empresa)}%0A` +
+                      `â€¢ *Cantidad de Empleados:* ${encodeURIComponent(empleados)}%0A` +
+                      `â€¢ *Celular:* ${encodeURIComponent(celular)}`;
+
+      window.open(`https://wa.me/50496447721?text=${mensaje}`, '_blank');
+    });
+  </script>
+</body>
+</html>
+

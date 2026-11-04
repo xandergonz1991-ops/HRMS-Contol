@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="es-HN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CotizaciÃ³n Formal B2B | HRMS Honduras</title>
+  <link rel="icon" type="image/png" href="./icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zkBlue: {
+              DEFAULT: '#002F6C',
+              dark: '#001F47',
+              light: '#E6ECF5'
+            },
+            zkGreen: {
+              DEFAULT: '#00A859',
+              hover: '#008F4C',
+              light: '#E6F6EE'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      @page {
+        size: letter portrait;
+        margin: 8mm 10mm;
+      }
+      body {
+        background: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased">
+
+  <!-- PANEL DE EDICIÃ“N RÃPIDA (Se oculta automÃ¡ticamente al imprimir o guardar en PDF) -->
+  <div class="no-print bg-zkBlue-dark text-white border-b border-white/10 sticky top-0 z-50 shadow-lg">
+    <div class="max-w-5xl mx-auto px-4 py-3">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-3 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <img src="./icon.png" alt="HRMS Honduras" class="w-8 h-8 rounded-lg bg-white p-0.5" />
+          <div>
+            <h1 class="text-sm font-bold tracking-wide uppercase text-white">Generador de CotizaciÃ³n Formal B2B â€” HRMS Honduras</h1>
+            <p class="text-xs text-blue-200">Personalice los datos del cliente abajo o edite cualquier texto directamente sobre la hoja antes de exportar a PDF.</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="window.print()" class="inline-flex items-center gap-2 bg-zkGreen hover:bg-zkGreen-hover text-white font-bold text-xs px-4 py-2.5 rounded-lg shadow transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Imprimir / Guardar en PDF
+          </button>
+          <a href="index.html" class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs px-3.5 py-2.5 rounded-lg transition">
+            Ver Landing Page
+          </a>
+        </div>
+      </div>
+
+      <!-- Controles rÃ¡pidos -->
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-2.5 pt-3 text-xs">
+        <div>
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">NÂ° CotizaciÃ³n</label>
+          <input id="in-quote" type="text" value="COT-HN-2026-018" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">Empresa Cliente</label>
+          <input id="in-company" type="text" placeholder="Ej: Comercial e Inversiones del Norte S. de R.L." value="Empresa Cliente S. de R.L." oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
+        </div>
+        <div>
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">RTN Cliente</label>
+          <input id="in-rtn" type="text" placeholder="0501-9000-000000" value="0501-9020-123456" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
+        </div>
+        <div>
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">AtenciÃ³n a (Contacto)</label>
+          <input id="in-contact" type="text" placeholder="Lic. / Gerencia General" value="Gerencia General / RRHH" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
+        </div>
+        <div>
+          <label class="block text-[10px] uppercase text-blue-200 font-semibold mb-1">Ciudad / Sede</label>
+          <input id="in-city" type="text" value="San Pedro Sula / Tegucigalpa" oninput="syncFields()" class="w-full rounded bg-white/10 border border-white/20 px-2.5 py-1.5 text-white placeholder-blue-300 focus:outline-none focus:border-zkGreen" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOJA DE COTIZACIÃ“N FORMAL (TAMAÃ‘O CARTA / A4) -->
+  <main class="py-6 px-4 print:p-0">
+    <div class="print-sheet max-w-[850px] mx-auto bg-white rounded-xl shadow-xl border border-slate-200 p-8 md:p-10">
+
+      <!-- 1. ENCABEZADO MEMBRETADO -->
+      <header class="flex items-start justify-between gap-6 border-b-2 border-zkBlue pb-4">
+        <div class="flex items-center gap-3.5">
+          <img src="./icon.png" alt="Logo HRMS Honduras" class="w-14 h-14 object-contain rounded-xl border border-slate-200 p-1 shadow-sm" />
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xl font-black tracking-tight text-zkBlue uppercase">HRMS HONDURAS</span>
+              <span class="bg-zkGreen/15 text-zkGreen text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-zkGreen/30 uppercase">Software B2B</span>
+            </div>
+            <p class="text-xs font-semibold text-slate-600 mt-0.5">Sistema de GestiÃ³n de Recursos Humanos, Planilla IHSS/RAP y BiometrÃ­a ZKTeco</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">ðŸ“ San Pedro Sula / Tegucigalpa, Honduras â€¢ ðŸ“ž Tel. / WhatsApp: <strong>+504 9644-7721</strong></p>
+          </div>
+        </div>
+
+        <div class="text-right shrink-0">
+          <div class="inline-block bg-zkBlue text-white px-3.5 py-1 rounded-md text-xs font-extrabold tracking-wider uppercase">
+            PROPUESTA TÃ‰CNICA Y COMERCIAL
+          </div>
+          <p class="text-xs font-bold text-slate-800 mt-1.5">
+            CotizaciÃ³n NÂ°: <span id="out-quote" contenteditable="true" class="text-zkBlue font-mono">COT-HN-2026-018</span>
+          </p>
+          <p class="text-[11px] text-slate-500">
+            Fecha de EmisiÃ³n: <span id="out-date" contenteditable="true" class="font-semibold text-slate-700"></span>
+          </p>
+          <p class="text-[11px] text-slate-500">
+            Vigencia: <span contenteditable="true" class="font-semibold text-emerald-700">15 dÃ­as calendario</span>
+          </p>
+        </div>
+      </header>
+
+      <!-- 2. DATOS DEL CLIENTE Y RESUMEN EJECUTIVO -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 bg-slate-50 rounded-lg p-3.5 border border-slate-200 text-xs">
+        <div>
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">Preparado para (Empresa):</span>
+          <p id="out-company" contenteditable="true" class="font-bold text-slate-900 text-sm mt-0.5">Empresa Cliente S. de R.L.</p>
+          <p class="text-[11px] text-slate-600">RTN: <span id="out-rtn" contenteditable="true" class="font-medium">0501-9020-123456</span></p>
+        </div>
+        <div>
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">AtenciÃ³n a:</span>
+          <p id="out-contact" contenteditable="true" class="font-bold text-slate-800 mt-0.5">Gerencia General / RRHH</p>
+          <p class="text-[11px] text-slate-600">UbicaciÃ³n: <span id="out-city" contenteditable="true">San Pedro Sula / Tegucigalpa</span></p>
+        </div>
+        <div>
+          <span class="text-[10px] font-bold uppercase text-slate-400 block">Moneda y CondiciÃ³n Fiscal:</span>
+          <p class="font-bold text-zkBlue mt-0.5">Lempiras HondureÃ±os (L / HNL)</p>
+          <p class="text-[11px] text-slate-600">InstalaciÃ³n Local Offline-First (Windows)</p>
+        </div>
+      </section>
+
+      <!-- 3. ALCANCE TÃ‰CNICO DEL SISTEMA -->
+      <section class="mb-4">
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-zkBlue mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
+          1. Alcance TÃ©cnico Incluido en el Sistema HRMS Honduras
+        </h2>
+        <div class="grid grid-cols-2 gap-2.5 text-[11px]">
+          <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
+            <p class="font-bold text-zkBlue">âœ” Motor de Planilla Legal HondureÃ±a (Quincenal y Mensual)</p>
+            <p class="text-slate-600 mt-0.5">CÃ¡lculo automÃ¡tico de techos y porcentajes editables de <strong>IHSS (Salud EM e IVM)</strong>, <strong>RAP (1.5% sobre excedente)</strong>, horas extras (+25%, +50%, +75%, +100%), bonos, prÃ©stamos, reporte general de planilla y vouchers individuales.</p>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
+            <p class="font-bold text-zkBlue">âœ” SincronizaciÃ³n ZKTeco TCP/IP + Lector CÃ³digo QR USB</p>
+            <p class="text-slate-600 mt-0.5">Descarga directa de marcajes desde relojes biomÃ©tricos <strong>ZKTeco en red local (Puerto 4370) en 5 segundos</strong> sin usar memorias USB, o marcaje instantÃ¡neo mediante carnets con cÃ³digo QR e impresiÃ³n de gafetes.</p>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
+            <p class="font-bold text-zkBlue">âœ” Expediente Digital y Acciones de Personal</p>
+            <p class="text-slate-600 mt-0.5">Directorio completo de empleados, historial de aumentos salariales, control de vacaciones, permisos con/sin goce de sueldo, incapacidades, sanciones y resguardo de contratos.</p>
+          </div>
+          <div class="border border-slate-200 rounded-lg p-2.5 bg-white">
+            <p class="font-bold text-zkBlue">âœ” Privacidad Total 100% Offline-First en su PC</p>
+            <p class="text-slate-600 mt-0.5">Sus datos financieros y salariales residen Ãºnicamente en el disco duro de su empresa con protecciÃ³n por <strong>ContraseÃ±a Maestra</strong> y exportaciÃ³n de respaldos locales en 1 clic.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PAQUETES PROMOCIONALES "LLAVE EN MANO" (DESTACADO) -->
+      <section class="mb-4">
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-zkBlue mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
+          2. Paquetes Promocionales de ImplementaciÃ³n "Llave en Mano" (Recomendado)
+        </h2>
+        <div class="grid grid-cols-2 gap-3.5">
+          <!-- Paquete 1 -->
+          <div class="rounded-xl border-2 border-slate-200 bg-slate-50/70 p-3.5 relative">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Paquete 01 â€¢ Hasta 15 Empleados</span>
+                <h3 class="text-sm font-extrabold text-zkBlue">PAQUETE PYME INICIO</h3>
+              </div>
+              <div class="text-right">
+                <span class="text-lg font-black text-zkBlue" contenteditable="true">L. 7,900.00</span>
+                <span class="block text-[9px] text-slate-500 font-semibold">Pago Ãšnico Llave en Mano</span>
+              </div>
+            </div>
+            <ul class="mt-2 space-y-1 text-[11px] text-slate-700 border-t border-slate-200 pt-2">
+              <li>â€¢ <strong>Licencia Anual Plan Emprendedor</strong> (hasta 15 colaboradores).</li>
+              <li>â€¢ ConfiguraciÃ³n de mÃ³dulo de marcaje por <strong>CÃ³digo QR USB / PC</strong>.</li>
+              <li>â€¢ DiseÃ±o y generaciÃ³n de <strong>carnets digitales con foto y QR</strong>.</li>
+              <li>â€¢ Carga inicial de su base de datos de empleados actual.</li>
+              <li>â€¢ CapacitaciÃ³n operativa a personal administrativo / contable.</li>
+            </ul>
+          </div>
+
+          <!-- Paquete 2 -->
+          <div class="rounded-xl border-2 border-zkGreen bg-zkGreen-light/40 p-3.5 relative">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="inline-block bg-zkGreen text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded mb-0.5">MÃ¡s Solicitado â€¢ Hasta 35 Empleados</span>
+                <h3 class="text-sm font-extrabold text-zkBlue">PAQUETE EMPRESA TOTAL</h3>
+              </div>
+              <div class="text-right">
+                <span class="text-lg font-black text-zkGreen" contenteditable="true">L. 14,500.00</span>
+                <span class="block text-[9px] text-slate-600 font-semibold">Pago Ãšnico Llave en Mano</span>
+              </div>
+            </div>
+            <ul class="mt-2 space-y-1 text-[11px] text-slate-800 border-t border-zkGreen/20 pt-2">
+              <li>â€¢ <strong>Licencia Anual Plan PYME Pro</strong> (hasta 35 colaboradores).</li>
+              <li>â€¢ <strong>Enlace directo en red TCP/IP con sus relojes biomÃ©tricos ZKTeco</strong>.</li>
+              <li>â€¢ MigraciÃ³n completa de su planilla actual desde Excel al sistema.</li>
+              <li>â€¢ ParametrizaciÃ³n contable completa (Techos IHSS, RAP, Horas Extras).</li>
+              <li>â€¢ AcompaÃ±amiento directo durante sus <strong>primeros 2 cierres de planilla</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. TABLA DE MODALIDADES DE LICENCIAMIENTO ESTÃNDAR -->
+      <section class="mb-4">
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-zkBlue mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
+          3. Tabla de Licenciamiento por Capacidad (Solo Licencia de Software)
+        </h2>
+        <table class="w-full border-collapse text-[11px]">
+          <thead>
+            <tr class="bg-zkBlue text-white uppercase text-[10px]">
+              <th class="border border-zkBlue px-3 py-1.5 text-left">Plan / Nivel</th>
+              <th class="border border-zkBlue px-3 py-1.5 text-center">Capacidad</th>
+              <th class="border border-zkBlue px-3 py-1.5 text-right">Licencia Semestral</th>
+              <th class="border border-zkBlue px-3 py-1.5 text-right">Licencia Anual (Ahorro 15%)</th>
+              <th class="border border-zkBlue px-3 py-1.5 text-right bg-zkBlue-dark">Licencia Perpetua (Vitalicia)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white">
+              <td class="border border-slate-300 px-3 py-1.5 font-bold text-slate-900">Plan Emprendedor</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-center text-slate-600">1 a 15 Empleados</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-medium" contenteditable="true">L. 3,900.00</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-bold text-zkBlue" contenteditable="true">L. 6,600.00</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-extrabold text-slate-900 bg-slate-50" contenteditable="true">L. 12,900.00</td>
+            </tr>
+            <tr class="bg-zkGreen-light/30">
+              <td class="border border-slate-300 px-3 py-1.5 font-bold text-zkBlue">Plan PYME Pro <span class="text-[9px] bg-zkGreen text-white px-1.5 py-0.5 rounded ml-1 uppercase">Ideal PYME</span></td>
+              <td class="border border-slate-300 px-3 py-1.5 text-center text-slate-700 font-semibold">16 a 35 Empleados</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-medium" contenteditable="true">L. 5,900.00</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-bold text-zkBlue" contenteditable="true">L. 9,700.00</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-extrabold text-zkGreen bg-zkGreen-light/50" contenteditable="true">L. 18,500.00</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="border border-slate-300 px-3 py-1.5 font-bold text-slate-900">Plan Empresa</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-center text-slate-600">36 a 75 Empleados</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-medium" contenteditable="true">L. 8,900.00</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-bold text-zkBlue" contenteditable="true">L. 14,200.00</td>
+              <td class="border border-slate-300 px-3 py-1.5 text-right font-extrabold text-slate-900 bg-slate-50" contenteditable="true">L. 26,900.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 6. CONDICIONES COMERCIALES Y FIRMAS -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-slate-200 text-[10.5px] text-slate-600">
+        <div>
+          <h4 class="font-extrabold text-zkBlue uppercase text-[11px] mb-1">Condiciones Comerciales y GarantÃ­a:</h4>
+          <ul class="space-y-0.5" contenteditable="true">
+            <li>â€¢ <strong>Tiempo de Entrega e InstalaciÃ³n:</strong> Inmediata (mismo dÃ­a hÃ¡bil vÃ­a remota o presencial).</li>
+            <li>â€¢ <strong>Forma de Pago:</strong> Transferencia bancaria (BAC / AtlÃ¡ntida / Ficohsa / BanpaÃ­s).</li>
+            <li>â€¢ <strong>Soporte TÃ©cnico y Actualizaciones:</strong> Incluido durante todo el perÃ­odo activo de licencia.</li>
+            <li>â€¢ <strong>Requerimientos MÃ­nimos:</strong> PC con Windows 10 o Windows 11 (64 bits), 4 GB RAM.</li>
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 items-end pt-6 text-center text-[11px]">
+          <div>
+            <div class="border-t border-slate-800 pt-1 font-bold text-slate-900">HRMS Honduras</div>
+            <p class="text-[10px] text-slate-500">ConsultorÃ­a Comercial B2B</p>
+            <p class="text-[10px] font-semibold text-zkBlue">+504 9644-7721</p>
+          </div>
+          <div>
+            <div class="border-t border-slate-800 pt-1 font-bold text-slate-900">AceptaciÃ³n del Cliente</div>
+            <p class="text-[10px] text-slate-500">Firma y Sello de AutorizaciÃ³n</p>
+            <p class="text-[10px] text-slate-400">Fecha: ____/____/2026</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // Inicializar fecha actual en formato de Honduras
+    const todayStr = new Date().toLocaleDateString('es-HN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    document.getElementById('out-date').textContent = todayStr;
+
+    function syncFields() {
+      document.getElementById('out-quote').textContent = document.getElementById('in-quote').value;
+      document.getElementById('out-company').textContent = document.getElementById('in-company').value;
+      document.getElementById('out-rtn').textContent = document.getElementById('in-rtn').value;
+      document.getElementById('out-contact').textContent = document.getElementById('in-contact').value;
+      document.getElementById('out-city').textContent = document.getElementById('in-city').value;
+    }
+  </script>
+</body>
+</html>
+
