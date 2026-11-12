@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HRMS Honduras | Software de Planilla, IHSS/RAP y Control Biométrico ZKTeco</title>
-  <meta name="description" content="HRMS Honduras: Sistema de escritorio Offline-first para Recursos Humanos, control de asistencia por QR/ZKTeco y cálculo automatizado de planilla bajo la ley laboral de Honduras." />
+  <title>HRMS Honduras | Software de Planilla IHSS/RAP, Auditoría de Asistencia ZKTeco/QR y Reportes Ejecutivos</title>
+  <meta name="description" content="HRMS Honduras: Sistema de escritorio Offline-first para Recursos Humanos, control de asistencia por QR/ZKTeco, auditoría de marcas con justificación o deducción automática en planilla, reportes ejecutivos Excel/PDF y cálculo de nómina bajo la ley laboral de Honduras." />
   
   <!-- Web Icon / Favicon Oficial -->
   <link rel="icon" type="image/png" href="./icon.png" />
@@ -71,22 +71,23 @@
         <img src="./icon.png" alt="Logo HRMS Honduras" class="w-11 h-11 rounded-xl shadow-sm group-hover:scale-105 transition-transform object-contain" />
         <div class="flex flex-col">
           <span class="text-xl font-extrabold tracking-tight text-zkBlue leading-none">HRMS <span class="text-zkGreen">Honduras</span></span>
-          <span class="text-[11px] font-semibold text-slate-500 tracking-wider uppercase mt-0.5">Planilla • IHSS/RAP • ZKTeco</span>
+          <span class="text-[11px] font-semibold text-slate-500 tracking-wider uppercase mt-0.5">Planilla • Auditoría Marcas • ZKTeco/QR</span>
         </div>
       </a>
 
       <!-- Enlaces de Navegación (Escritorio) -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
         <a href="#inicio" class="hover:text-zkBlue transition-colors">Inicio</a>
-        <a href="#beneficios" class="hover:text-zkBlue transition-colors">Beneficios</a>
-        <a href="#capturas" class="hover:text-zkBlue transition-colors">Módulos en Vivo</a>
+        <a href="#actualizaciones" class="text-zkGreen font-bold hover:text-zkBlue transition-colors">★ Nuevas Funciones</a>
+        <a href="#beneficios" class="hover:text-zkBlue transition-colors">Módulos Explicados</a>
+        <a href="#capturas" class="hover:text-zkBlue transition-colors">Galería (15 Pantallas)</a>
         <a href="#precios" class="hover:text-zkBlue transition-colors">Precios</a>
         <a href="#faqs" class="hover:text-zkBlue transition-colors">FAQs</a>
       </nav>
 
       <!-- CTA Destacado -->
       <div class="hidden md:flex items-center gap-3">
-        <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20probar%20la%20demo%20para%20automatizar%20mi%20planilla%20y%20asistencia."
+        <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20actualizada%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20probar%20la%20demo%20para%20automatizar%20mi%20planilla%20y%20asistencia."
            target="_blank" rel="noopener noreferrer"
            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-sm transition-all">
           <span>Probar Demo</span>
@@ -105,8 +106,9 @@
     <!-- Menú Desplegable Móvil -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-3">
       <a href="#inicio" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Inicio</a>
-      <a href="#beneficios" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Beneficios</a>
-      <a href="#capturas" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Módulos en Vivo</a>
+      <a href="#actualizaciones" class="block py-2 text-sm font-bold text-zkGreen">★ Nuevas Funciones 2026</a>
+      <a href="#beneficios" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Módulos Explicados</a>
+      <a href="#capturas" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Galería (15 Pantallas)</a>
       <a href="#precios" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">Precios</a>
       <a href="#faqs" class="block py-2 text-sm font-semibold text-slate-700 hover:text-zkBlue">FAQs</a>
       <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20probar%20la%20demo."
@@ -120,7 +122,7 @@
   <!-- ==========================================
        2. SECCIÓN PRINCIPAL (HERO SECTION)
        ========================================== -->
-  <section id="inicio" class="relative bg-white py-12 lg:py-20 overflow-hidden">
+  <section id="inicio" class="relative bg-white py-12 lg:py-16 overflow-hidden">
     <!-- Fondo decorativo sutil con hr_hero.jpg en baja opacidad -->
     <div class="absolute inset-0 pointer-events-none opacity-[0.035]">
       <img src="./hr_hero.jpg" alt="" class="w-full h-full object-cover" />
@@ -130,23 +132,34 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
         
         <!-- Columna Izquierda: Propuesta de Valor y Conversión -->
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-5">
           <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zkGreen-light border border-zkGreen/30">
             <img src="./icon.png" alt="Icono HRMS Honduras" class="w-4 h-4 rounded-sm" />
-            <span class="text-xs font-bold uppercase tracking-wider text-zkGreen">Software Oficial para PYMEs de Honduras</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-zkGreen">Versión 2026 Actualizada • Auditoría de Marcas + Reportes Ejecutivos</span>
           </div>
 
-          <h1 class="text-2xl sm:text-3xl lg:text-[34px] font-extrabold text-zkBlue leading-[1.2] tracking-tight">
-            Automatice sus deducciones de IHSS/RAP sin errores y descargue las marcas de sus relojes ZKTeco directamente a la planilla en 5 segundos, sin usar memorias USB.
+          <h1 class="text-2xl sm:text-3xl lg:text-[33px] font-extrabold text-zkBlue leading-[1.2] tracking-tight">
+            Automatice su Planilla IHSS/RAP, descargue marcas ZKTeco en 5 segundos y audite quién marcó entrada hoy antes de pagar o deducir el día.
           </h1>
 
-          <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-            <strong>HRMS Honduras</strong> se instala directamente en la PC de su oficina con arquitectura <strong>Offline-first</strong>. Sus sueldos, contratos y expedientes quedan <strong>100% privados en su equipo local</strong>, eliminando pagos mensuales en la nube y funcionando incluso sin internet.
+          <p class="text-base text-slate-600 leading-relaxed">
+            <strong>HRMS Honduras</strong> conecta su reloj biométrico <strong>ZKTeco o lector QR USB</strong> directamente con su planilla Quincenal y Mensual. Ahora incluye <strong>Verificación de Marcas de Entrada (Aprobación de Pago con Justificación o Deducción Automática en Planilla)</strong>, <strong>Centro de Reportes Ejecutivos (Excel/PDF)</strong> y <strong>Galería de Carnets con Foto y QR</strong>, funcionando <strong>100% Offline</strong> en su PC.
           </p>
+
+          <!-- Resumen rápido de las nuevas actualizaciones -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-1.5 text-xs text-slate-700">
+            <div class="font-extrabold text-zkBlue uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+              <span class="inline-block w-2 h-2 rounded-full bg-zkGreen"></span>
+              Nuevas Actualizaciones Incluidas en el Sistema:
+            </div>
+            <p>✔ <strong>Auditoría de Marcas sin Entrada:</strong> Si un empleado no marca entrada, el día queda en espera hasta que RRHH <em>Justifique (Apruebe Pago)</em> o <em>Aplique Deducción Automática</em> en Nómina.</p>
+            <p>✔ <strong>Centro de 5 Reportes Ejecutivos:</strong> Horas Extras por empleado, Permisos, Vacaciones, Tardanzas y Ausencias (Exportables a <strong>Excel CSV y PDF Oficial</strong>).</p>
+            <p>✔ <strong>Horarios Contratados y Carnets PVC/QR:</strong> Cálculo automático opcional de horas extras (+25%, +50%, +75%, +100%) e impresión de pliego de carnets con fotografía.</p>
+          </div>
 
           <!-- Botones de Acción Principales -->
           <div class="pt-1 flex flex-col sm:flex-row gap-4">
-            <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20y%20me%20gustar%C3%ADa%20agendar%20una%20demo%20para%20automatizar%20mi%20planilla%20y%20asistencia."
+            <a href="https://wa.me/50496447721?text=Hola%2C%20vi%20la%20p%C3%A1gina%20web%20de%20HRMS%20Honduras%20con%20las%20nuevas%20actualizaciones%20y%20me%20gustar%C3%ADa%20agendar%20una%20demo."
                target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-base font-bold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-md hover:shadow-lg transition-all">
               <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -154,37 +167,21 @@
               </svg>
               Agendar Demo (9644-7721)
             </a>
-            <a href="#precios"
+            <a href="#beneficios"
                class="inline-flex items-center justify-center px-7 py-4 rounded-xl text-base font-bold text-white bg-zkBlue hover:bg-zkBlue-dark shadow-md transition-all">
-              Ver Planes y Precios
+              Explorar Módulos
             </a>
-          </div>
-
-          <!-- Sellos de Confianza Técnica -->
-          <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-slate-200 text-xs font-semibold text-slate-600">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-              <span>Planilla Quincenal (50%) y Mensual</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-              <span>IHSS (L. 11,903.13) y RAP (1.5%)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-zkGreen"></span>
-              <span>Enlace ZKTeco (4370) y QR USB</span>
-            </div>
           </div>
         </div>
 
-        <!-- Columna Derecha: Capturas Reales Interactivas del Sistema -->
+        <!-- Columna Derecha: Capturas Reales Interactivas del Sistema (Con las mejores capturas nuevas) -->
         <div class="lg:col-span-6">
           <div class="bg-slate-900 border-2 border-slate-200 rounded-2xl shadow-xl overflow-hidden">
             <!-- Barra Superior del Visor del Sistema -->
             <div class="bg-zkBlue px-4 py-3 flex flex-wrap items-center justify-between gap-2">
               <div class="flex items-center gap-2">
                 <img src="./icon.png" alt="Icono" class="w-5 h-5 rounded" />
-                <span class="text-xs font-bold text-white">HRMS Honduras — Capturas Reales del Sistema</span>
+                <span class="text-xs font-bold text-white">HRMS Honduras — Explore los Módulos en Vivo</span>
               </div>
               <span class="px-2.5 py-0.5 text-[10px] font-extrabold bg-zkGreen text-white rounded-full uppercase tracking-wider">
                 100% Funcional Offline
@@ -192,43 +189,51 @@
             </div>
 
             <!-- Pestañas Rápidas para cambiar la captura del Hero -->
-            <div class="bg-slate-100 px-3 py-2 border-b border-slate-200 flex flex-wrap gap-1.5 text-xs font-bold">
-              <button type="button" onclick="setHeroShot('./Captura de pantalla (176).png', 'Nómina Quincenal y Mensual en Lempiras: Sueldo, horas extras, bonos, IHSS/RAP y Reporte General Contable.', this)"
-                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-zkBlue text-white transition-all">
-                1. Planilla Quincenal/Mensual
+            <div class="bg-slate-100 px-3 py-2 border-b border-slate-200 flex flex-wrap gap-1.5 text-[11px] font-bold">
+              <button type="button" onclick="setHeroShot('./mod-auditoria-aprobar-deducir.png', 'NUEVO — Auditoría de Marcas: Cuando un empleado no marca entrada, RRHH decide en 1 clic si Justifica (Aprueba Pago) o Aplica Deducción del Día en Planilla.', this)"
+                      class="hero-tab-btn px-2.5 py-1.5 rounded-lg bg-zkBlue text-white transition-all">
+                1. Auditoría y Deducción Día
               </button>
-              <button type="button" onclick="setHeroShot('./Captura de pantalla (177).png', 'Voucher / Boleta Individual e Impresión de Planilla General con encabezado de empresa y deducciones.', this)"
-                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
-                2. Reportes y Vouchers
+              <button type="button" onclick="setHeroShot('./mod-centro-reportes-ejecutivos.png', 'NUEVO — Centro de Reportes Ejecutivos: Consolidado, Horas Extras, Permisos/Vacaciones, Tardanzas y Ausencias (Exportable a Excel CSV y PDF Oficial).', this)"
+                      class="hero-tab-btn px-2.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                2. Centro de Reportes
               </button>
-              <button type="button" onclick="setHeroShot('./Captura de pantalla (173).png', 'Control de Asistencia: Marcaje por Reloj ZKTeco en Red, Código QR USB, Huella USB o RFID.', this)"
-                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
-                3. Asistencia ZKTeco/QR
+              <button type="button" onclick="setHeroShot('./mod-zkteco-sync-vivo.png', 'Reloj de Marcaje y Sincronización Directa ZKTeco TCP/IP en 5 segundos con control de puntualidad y tardanzas en vivo.', this)"
+                      class="hero-tab-btn px-2.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                3. Sincronización ZKTeco
               </button>
-              <button type="button" onclick="setHeroShot('./Captura de pantalla (181).png', 'Panel Principal (Dashboard) de HRMS Honduras con sus 5 módulos integrados.', this)"
-                      class="hero-tab-btn px-3 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
-                4. Dashboard Principal
+              <button type="button" onclick="setHeroShot('./mod-galeria-carnets-qr.png', 'Galería e Impresión de Carnets Corporativos con Fotografía Oficial, DNI, Cargo y Código QR Único.', this)"
+                      class="hero-tab-btn px-2.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                4. Pliego Carnets QR
+              </button>
+              <button type="button" onclick="setHeroShot('./Captura de pantalla (176).png', 'Nómina Quincenal (50%) y Mensual (100%) en Lempiras: Sueldo, horas extras, bonos, IHSS/RAP y Reporte General Contable.', this)"
+                      class="hero-tab-btn px-2.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                5. Planilla IHSS/RAP
+              </button>
+              <button type="button" onclick="setHeroShot('./mod-config-ihss-extras-zkteco.png', 'Configuración Integral: Techos IHSS/RAP editables, Interruptor de Horas Extras Automáticas según Horario y Conexión IP ZKTeco.', this)"
+                      class="hero-tab-btn px-2.5 py-1.5 rounded-lg bg-white text-slate-700 hover:bg-slate-200 transition-all">
+                6. Horas Extras Auto
               </button>
             </div>
 
             <!-- Imagen Principal con recorte de barra de tareas y clic para ampliar -->
             <div class="app-screenshot-crop cursor-zoom-in group" onclick="openLightbox(document.getElementById('hero-main-img').src, document.getElementById('hero-main-caption').innerText)">
-              <img id="hero-main-img" src="./Captura de pantalla (176).png" alt="Captura real de Nómina en HRMS Honduras" class="transition-transform duration-300 group-hover:scale-[1.01]" />
+              <img id="hero-main-img" src="./mod-auditoria-aprobar-deducir.png" alt="Captura real de HRMS Honduras" class="transition-transform duration-300 group-hover:scale-[1.01]" />
               <div class="absolute bottom-3 right-3 bg-zkBlue/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg shadow flex items-center gap-1.5">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>
                 </svg>
-                <span>Clic para ampliar captura</span>
+                <span>Clic para ampliar en HD</span>
               </div>
             </div>
 
             <!-- Pie explicativo de la captura activa -->
             <div class="bg-white px-4 py-3 border-t border-slate-200 flex items-center justify-between gap-4">
               <p id="hero-main-caption" class="text-xs font-semibold text-slate-700">
-                Nómina Quincenal y Mensual en Lempiras: Sueldo, horas extras, bonos, IHSS/RAP y Reporte General Contable.
+                NUEVO — Auditoría de Marcas: Cuando un empleado no marca entrada, RRHH decide en 1 clic si Justifica (Aprueba Pago) o Aplica Deducción del Día en Planilla.
               </p>
               <a href="#capturas" class="shrink-0 text-xs font-extrabold text-zkGreen hover:underline">
-                Ver las 10 capturas →
+                Ver las 15 capturas →
               </a>
             </div>
           </div>
@@ -239,159 +244,270 @@
   </section>
 
   <!-- ==========================================
-       BANNER VISUAL EJECUTIVO (shutterstock_2703928353.jpg + hr_hero.jpg)
+       2.5 DESTACADO DE NUEVAS ACTUALIZACIONES 2026
        ========================================== -->
-  <section class="bg-zkBlue text-white py-10 border-y border-zkBlue-dark">
+  <section id="actualizaciones" class="bg-zkBlue text-white py-12 border-y border-zkBlue-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-2">
-          <span class="text-xs font-extrabold uppercase tracking-widest text-zkGreen">Diseñado para Empresas de 10 a 75 Empleados</span>
-          <h2 class="text-xl sm:text-2xl font-extrabold">
-            Tecnología de Nivel Corporativo al Alcance de las PYMEs de Honduras
-          </h2>
-          <p class="text-sm text-white/80 leading-relaxed">
-            Desde agroindustrias, talleres, clínicas y ferreterías hasta distribuidoras comerciales: controle entradas, permisos, vacaciones, préstamos y planillas en Lempiras desde un solo lugar.
-          </p>
+      <div class="text-center max-w-3xl mx-auto mb-8">
+        <span class="inline-block bg-zkGreen text-white text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full">
+          ★ Nuevas Actualizaciones Incluidas 2026
+        </span>
+        <h2 class="mt-3 text-2xl sm:text-3xl font-extrabold">
+          Control Total desde que el Empleado Marca Entrada hasta su Recibo de Planilla
+        </h2>
+        <p class="mt-2 text-sm text-blue-100">
+          Diseñado con base en las necesidades reales de Recursos Humanos y Contabilidad en Honduras.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Novedad 1 -->
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">Actualización 01 • Conectado a Planilla</span>
+            <h3 class="text-lg font-extrabold text-white mt-1">Verificación de Marcas: Justificación de Pago o Deducción Automática</h3>
+            <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+              Si un colaborador <strong>no registra marca de entrada</strong> en el reloj ZKTeco o lector QR, el sistema pone su día en espera. Desde el panel de auditoría, RRHH puede <strong>Aprobar el Pago del Día ingresando una justificación</strong> o <strong>Aplicar la Deducción Automática de 1 día de salario</strong> directo a la Nómina.
+            </p>
+          </div>
+          <button type="button" onclick="openLightbox('./mod-auditoria-aprobar-deducir.png', 'Verificación de Marcas de Entrada: Botones para Justificar (Aprobar Pago) o Aplicar Deducción en Planilla')" class="mt-4 text-left text-xs font-bold text-zkGreen bg-white px-3.5 py-2 rounded-lg hover:bg-blue-50 transition inline-flex items-center justify-between">
+            <span>Ver pantalla de Auditoría de Marcas</span>
+            <span>→</span>
+          </button>
         </div>
-        <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-          <div class="relative rounded-xl overflow-hidden border border-white/15 h-28 shadow-md">
-            <img src="./shutterstock_2703928353.jpg" alt="Gestión de Talento Humano" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-zkBlue/90 via-zkBlue/30 to-transparent flex items-end p-3">
-              <span class="text-xs font-bold text-white">Gestión Integral RRHH</span>
-            </div>
+
+        <!-- Novedad 2 -->
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-300">Actualización 02 • Auditoría y Gerencia</span>
+            <h3 class="text-lg font-extrabold text-white mt-1">Centro de 5 Reportes Ejecutivos (Excel CSV y PDF Oficial)</h3>
+            <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+              Genere reportes filtrados por colaborador o rango de fechas de: <strong>1) Consolidado por Empleado</strong>, <strong>2) Horas Extras por Empleado</strong>, <strong>3) Permisos y Vacaciones</strong>, <strong>4) Entradas Tardías (minutos acumulados)</strong> y <strong>5) Ausencias y Deducciones</strong>.
+            </p>
           </div>
-          <div class="relative rounded-xl overflow-hidden border border-white/15 h-28 shadow-md">
-            <img src="./hr_hero.jpg" alt="Red Conectada ZKTeco" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-zkBlue/90 via-zkBlue/30 to-transparent flex items-end p-3">
-              <span class="text-xs font-bold text-white">Conectividad Red Local</span>
-            </div>
+          <button type="button" onclick="openLightbox('./mod-centro-reportes-ejecutivos.png', 'Centro de Reportes Ejecutivos con exportación a Excel (CSV) e Impresión PDF Oficial')" class="mt-4 text-left text-xs font-bold text-zkGreen bg-white px-3.5 py-2 rounded-lg hover:bg-blue-50 transition inline-flex items-center justify-between">
+            <span>Ver Centro de Reportes Ejecutivos</span>
+            <span>→</span>
+          </button>
+        </div>
+
+        <!-- Novedad 3 -->
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-sky-300">Actualización 03 • Identificación y Turnos</span>
+            <h3 class="text-lg font-extrabold text-white mt-1">Pliego de Carnets con Foto/QR y Horas Extras Automáticas</h3>
+            <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+              Imprima el <strong>pliego completo de carnets corporativos con fotografía, DNI y código QR</strong> listos para gafete PVC. Además, asigne la <strong>Hora de Entrada y Salida contratada</strong> para detectar tardanzas y calcular horas extras automáticamente al marcar salida.
+            </p>
           </div>
+          <button type="button" onclick="openLightbox('./mod-galeria-carnets-qr.png', 'Galería e Impresión en Pliego de Carnets Corporativos con Fotografía Oficial, DNI y Código QR')" class="mt-4 text-left text-xs font-bold text-zkGreen bg-white px-3.5 py-2 rounded-lg hover:bg-blue-50 transition inline-flex items-center justify-between">
+            <span>Ver Galería de Carnets con Foto y QR</span>
+            <span>→</span>
+          </button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==========================================
-       3. CUADRÍCULA DE BENEFICIOS CON CAPTURAS ESTRATÉGICAS
+       3. EXPLICACIÓN DETALLADA DE LOS 6 MÓDULOS CON LAS MEJORES CAPTURAS
        ========================================== -->
   <section id="beneficios" class="bg-zkGray py-20 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">4 Pilares Tecnológicos</span>
+        <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">Funcionamiento Paso a Paso</span>
         <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-zkBlue">
-          Conozca por dentro cada Módulo de HRMS Honduras
+          Cómo Funciona Cada Módulo de HRMS Honduras
         </h2>
         <p class="mt-3 text-slate-600 text-base">
-          Haga clic sobre cualquiera de las capturas reales para inspeccionar en alta resolución cada pantalla del sistema.
+          Seleccionamos las pantallas clave del sistema para que conozca con total claridad cómo opera cada módulo. Haga clic en cualquier imagen o botón para ampliarla.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        <!-- TARJETA 1: EXPEDIENTE, ACCIONES Y CARNETS -> Capturas (172) y (174) -->
+        <!-- MÓDULO 01: DIRECTORIO, HORARIO CONTRATADO Y CARNETS CON FOTO/QR -->
         <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
           <div>
             <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
-                 onclick="openLightbox('./Captura de pantalla (172).png', 'Módulo 01: Directorio de Empleados, Salarios en Lempiras y Expediente Digital')">
-              <img src="./Captura de pantalla (172).png" alt="Directorio de Empleados en HRMS Honduras" />
+                 onclick="openLightbox('./mod-directorio-empleados-fotos.png', 'Módulo 01: Directorio de Empleados con Fotografía, DNI, Horario Asignado, Salario en Lempiras y Galería de Carnets')">
+              <img src="./mod-directorio-empleados-fotos.png" alt="Directorio de Empleados con Fotos y Horarios en HRMS Honduras" />
               <span class="absolute top-3 left-3 bg-zkBlue text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
-                Módulo 01 • Directorio y Carnets
+                Módulo 01 • Expediente, Horarios y Carnets QR
               </span>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-extrabold text-zkBlue">Expediente Digital, Acciones de Personal y Carnets</h3>
+              <h3 class="text-xl font-extrabold text-zkBlue">1. Directorio de Personal, Horario Laboral y Pliego de Carnets QR</h3>
               <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                Administre el directorio completo de colaboradores con su departamento, puesto, salario en Lempiras y estado activo. Registre <strong>permisos, vacaciones, sanciones e incapacidades</strong> y genere carnets corporativos listos para imprimir con fotografía y QR.
+                Registre a cada colaborador con su <strong>fotografía de perfil, DNI/RTN, ID Biométrico (Reloj), cargo, salario mensual en Lempiras y su Horario Contratado (ej. `08:00 — 17:00` y tipo de hora extra aplicable)</strong>. Con un solo clic abra la <strong>Galería de Carnets Corporativos</strong> para imprimir gafetes individuales o en pliego con código QR único.
               </p>
             </div>
           </div>
-          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="font-semibold text-zkBlue">✓ Incluye registro de Vacaciones y Permisos</span>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
             <button type="button"
-                    onclick="openLightbox('./Captura de pantalla (174).png', 'Registro de Acción Personal: Asistencia, Permisos, Vacaciones y Sanciones con datos de Empresa y RTN')"
+                    onclick="openLightbox('./mod-galeria-carnets-qr.png', 'Galería de Carnets Corporativos listos para imprimir con fotografía, DNI y Código QR')"
                     class="font-bold text-zkGreen hover:underline">
-              Ver pantalla de Acciones →
+              🪪 Ver Pliego de Carnets QR →
+            </button>
+            <button type="button"
+                    onclick="openLightbox('./mod-nuevo-empleado-horario.png', 'Ficha de Nuevo Empleado: Fotografía de Carnét, ID Biométrico y Horario Laboral Contratado')"
+                    class="font-bold text-zkBlue hover:underline">
+              ⏱️ Ver Ficha de Horario Contratado →
             </button>
           </div>
         </article>
 
-        <!-- TARJETA 2: CONTROL POR QR / MULTI-MARCADOR -> Captura (173) -->
+        <!-- MÓDULO 02: RELOJ DE MARCAJE Y SINCRONIZACIÓN ZKTECO TCP/IP -->
         <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
           <div>
             <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
-                 onclick="openLightbox('./Captura de pantalla (173).png', 'Módulo 02: Control de Asistencia con 5 métodos: Manual, Reloj ZKTeco, Lector USB, RFID/Tarjeta y Código QR')">
-              <img src="./Captura de pantalla (173).png" alt="Control de Asistencia por Código QR y Lector USB" />
+                 onclick="openLightbox('./mod-zkteco-sync-vivo.png', 'Módulo 02: Reloj de Marcaje en Vivo y Sincronización Directa TCP/IP con Reloj Biométrico ZKTeco')">
+              <img src="./mod-zkteco-sync-vivo.png" alt="Sincronización Directa ZKTeco TCP/IP y Marcas Registradas Hoy" />
               <span class="absolute top-3 left-3 bg-zkGreen text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
-                Módulo 02 • Marcaje QR y Multi-Lector
+                Módulo 02 • Biometría ZKTeco (TCP/IP) y QR
               </span>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-extrabold text-zkBlue">Control de Asistencia por Código QR, Huella USB y RFID</h3>
+              <h3 class="text-xl font-extrabold text-zkBlue">2. Reloj de Marcaje Multi-Método y Descarga ZKTeco en 5 Segundos</h3>
               <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                Sistema de marcaje sin contacto mediante el <strong>código QR impreso en el carnet</strong> del empleado. Conecte un lector QR estándar directo al puerto USB de su PC (sin costos ni licencias adicionales), o utilice lectores de huella USB y tarjetas RFID.
+                Admite 4 modalidades simultáneas: <strong>Sincronización Directa ZKTeco por red local (TCP/IP puerto `4370` sin usar memoria USB)</strong>, <strong>Lector de Código QR USB</strong>, <strong>Tarjeta RFID</strong> y <strong>Marcaje Manual</strong>. La tabla en vivo compara la hora de entrada con el horario contratado y señala automáticamente quién llegó <strong>Puntual</strong> y quién tiene <strong>Tardanza (minutos exactos)</strong>.
               </p>
             </div>
           </div>
-          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="font-semibold text-zkBlue">✓ 5 modos de marcaje integrados en pantalla</span>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
             <button type="button"
-                    onclick="openLightbox('./Captura de pantalla (173).png', 'Control de Asistencia en Tiempo Real')"
+                    onclick="openLightbox('./mod-asistencia-reloj-marcas.png', 'Vista General de Asistencia con alerta automática de colaboradores sin marca de entrada')"
                     class="font-bold text-zkGreen hover:underline">
-              Ampliar captura →
+              🔔 Ver Alerta de Faltantes en Vivo →
+            </button>
+            <button type="button"
+                    onclick="openLightbox('./mod-zkteco-sync-vivo.png', 'Sincronización Directa ZKTeco TCP/IP en 5 segundos')"
+                    class="font-bold text-zkBlue hover:underline">
+              📡 Ampliar Sincronización ZKTeco →
             </button>
           </div>
         </article>
 
-        <!-- TARJETA 3: SINCRONIZACIÓN ZKTECO TCP/IP -> Captura (178) -->
+        <!-- MÓDULO 03: AUDITORÍA DE MARCAS DE ENTRADA (JUSTIFICACIÓN O DEDUCCIÓN EN PLANILLA) -->
+        <article class="bg-white rounded-2xl border-2 border-zkGreen/60 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./mod-auditoria-aprobar-deducir.png', 'Módulo 03 (NUEVO): Verificación de Marcas de Entrada — Aprobar Pago con Justificación o Aplicar Deducción Automática del Día en Planilla')">
+              <img src="./mod-auditoria-aprobar-deducir.png" alt="Auditoría de Marcas: Justificación de Pago o Deducción en Planilla" />
+              <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[11px] font-black px-3 py-1 rounded-md shadow uppercase">
+                ★ Nuevo Módulo 03 • Auditoría de Pago Diario
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">3. Auditoría de Marcas: Justificación de Pago o Deducción en Planilla</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                ¿Qué sucede cuando un empleado no marca entrada? El sistema detecta automáticamente a los colaboradores <strong>Sin Marca de Entrada</strong>, calcula su salario diario exacto (ej. `L 416.67`) y exige una decisión de RRHH: hacer clic en <strong>`✓ Justificar (Aprobar Pago)`</strong> anotando el motivo autorizado (ej. gira comercial, incapacidad) o <strong>`🚫 Aplicar Deducción`</strong> para descontar automáticamente el día no laborado en el próximo cierre de planilla.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+            <button type="button"
+                    onclick="openLightbox('./mod-auditoria-aprobar-deducir.png', 'Resolución RRHH para empleados sin marca: Justificar (Aprobar Pago) o Aplicar Deducción')"
+                    class="font-bold text-zkGreen hover:underline">
+              ✅ Ver Botones Justificar / Deducir →
+            </button>
+            <button type="button"
+                    onclick="openLightbox('./mod-asistencia-auditoria-header.png', 'Tablero General de Verificación de Marcas con contadores de Asistencia Puntual, Sin Marca, Justificados y Deducidos')"
+                    class="font-bold text-zkBlue hover:underline">
+              🛡️ Ver Tablero Completo de Auditoría →
+            </button>
+          </div>
+        </article>
+
+        <!-- MÓDULO 04: CENTRO DE REPORTES EJECUTIVOS (EXCEL CSV + PDF OFICIAL) -->
+        <article class="bg-white rounded-2xl border-2 border-zkBlue/40 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./mod-centro-reportes-ejecutivos.png', 'Módulo 04 (NUEVO): Centro de Reportes Ejecutivos con 5 reportes integrados, filtros por fecha/empleado y exportación a Excel (CSV) y PDF Oficial')">
+              <img src="./mod-centro-reportes-ejecutivos.png" alt="Centro de Reportes Ejecutivos en HRMS Honduras" />
+              <span class="absolute top-3 left-3 bg-zkBlue text-white text-[11px] font-black px-3 py-1 rounded-md shadow uppercase">
+                ★ Nuevo Módulo 04 • Centro de Reportes Ejecutivos
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">4. Centro de 5 Reportes Ejecutivos y Acciones de Personal</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                Consulte, filtre por empleado o rango de fechas y exporte a <strong>Excel (CSV)</strong> o <strong>Documento PDF Oficial Imprimible</strong> los 5 reportes clave: <strong>1) Consolidado por Empleado</strong>, <strong>2) Horas Extras por Empleado</strong>, <strong>3) Permisos y Vacaciones</strong>, <strong>4) Entradas Tardías</strong> y <strong>5) Ausencias, Justificaciones y Deducciones</strong>. Incluye además el registro formal de vacaciones, permisos y sanciones con respaldo documental.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+            <button type="button"
+                    onclick="openLightbox('./mod-centro-reportes-ejecutivos.png', 'Centro de Reportes Ejecutivos con exportación Excel y PDF')"
+                    class="font-bold text-zkGreen hover:underline">
+              📊 Ampliar Centro de Reportes →
+            </button>
+            <button type="button"
+                    onclick="openLightbox('./mod-acciones-vacaciones.png', 'Registro de Acción Personal: Vacaciones, Permisos y Sanciones con fechas de inicio y fin')"
+                    class="font-bold text-zkBlue hover:underline">
+              🌴 Ver Registro de Vacaciones y Permisos →
+            </button>
+          </div>
+        </article>
+
+        <!-- MÓDULO 05: MOTOR DE NÓMINA HONDUREÑA QUINCENAL Y MENSUAL + HORAS EXTRAS -->
         <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
           <div>
             <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
-                 onclick="openLightbox('./Captura de pantalla (178).png', 'Módulo 03: Integración Nativa TCP/IP con Reloj Biométrico ZKTeco / Hikvision (Puerto 4370)')">
-              <img src="./Captura de pantalla (178).png" alt="Configuración de Reloj Biométrico ZKTeco TCP/IP" />
+                 onclick="openLightbox('./Captura de pantalla (176).png', 'Módulo 05: Nómina Procesada con Sueldo Ordinario, Horas Extras, Bonos, Préstamos, IHSS/RAP y Neto a Pagar en Lempiras')">
+              <img src="./Captura de pantalla (176).png" alt="Planilla Quincenal y Mensual Procesada en HRMS Honduras" />
+              <span class="absolute top-3 left-3 bg-zkGreen text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
+                Módulo 05 • Planilla Quincenal (50%) y Mensual (100%)
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold text-zkBlue">5. Planilla Legal Hondureña, Jornadas de Horas Extras y Vouchers</h3>
+              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                Alterne en un clic entre <strong>Pago Quincenal (50%) y Pago Mensual (100%)</strong>. El motor liquida automáticamente el techo oficial de <strong>IHSS (`L. 11,903.13`: Salud EM e IVM) y RAP (`1.5%`)</strong>, suma <strong>bonificaciones, horas extras según jornada (`Diurna +25%`, `Nocturna +50%`, `Mixta +75%`, `Feriado +100%`)</strong> y descuenta <strong>préstamos o días no justificados</strong>. Imprima la <strong>Planilla General Contable</strong> y los <strong>Vouchers individuales con firma</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+            <button type="button"
+                    onclick="openLightbox('./mod-horas-extras-jornadas.png', 'Selector de Horas Extras bajo Ley de Honduras: Diurna (+25%), Nocturna (+50%), Mixta (+75%) y Feriado/Descanso (+100%)')"
+                    class="font-bold text-zkGreen hover:underline">
+              ⏱️ Ver Tasas de Horas Extras (+25% a +100%) →
+            </button>
+            <button type="button"
+                    onclick="openLightbox('./Captura de pantalla (177).png', 'Voucher de Pago Individual con desglose de ingresos, IHSS, RAP y firma de recibido')"
+                    class="font-bold text-zkBlue hover:underline">
+              🧾 Ver Voucher de Pago Imprimible →
+            </button>
+          </div>
+        </article>
+
+        <!-- MÓDULO 06: CONFIGURACIÓN IHSS/RAP, HORAS EXTRAS AUTOMÁTICAS Y CONEXIÓN ZKTECO -->
+        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
+                 onclick="openLightbox('./mod-config-ihss-extras-zkteco.png', 'Módulo 06: Configuración de Techos IHSS/RAP, Automatización de Horas Extras según Horario Contratado y Conexión IP Reloj ZKTeco')">
+              <img src="./mod-config-ihss-extras-zkteco.png" alt="Configuración de Techos IHSS, Horas Extras Automáticas y ZKTeco" />
               <span class="absolute top-3 left-3 bg-zkBlue text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
-                Módulo 03 • Enlace Directo ZKTeco
+                Módulo 06 • Parámetros, Horas Extras Auto y Seguridad
               </span>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-extrabold text-zkBlue">Sincronización Nativa con Relojes ZKTeco por Red (TCP/IP)</h3>
+              <h3 class="text-xl font-extrabold text-zkBlue">6. Parámetros Editables, Horas Extras Automáticas y Respaldo Local</h3>
               <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                Olvídese de extraer archivos en memorias USB. Configure la <strong>Dirección IP de su reloj (ej. `192.168.1.201`) y el puerto TCP `4370`</strong> para descargar las marcas de entrada/salida y calcular horas extras en 5 segundos.
+                Actualice sin depender de soporte técnico los datos de su empresa (Nombre, RTN, Dirección), los techos de <strong>IHSS (`11903.13`), EM (`2.5%`), IVM (`1%`) y RAP (`1.5%`)</strong>, active o desactive el interruptor de <strong>Automatización de Horas Extras según Horario Contratado</strong> (con minutos de tolerancia configurables) y defina la IP de su reloj ZKTeco (`192.168.1.201` puerto `4370`). Incluye <strong>Contraseña Maestra</strong> y exportación de base de datos local.
               </p>
             </div>
           </div>
-          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="font-semibold text-zkBlue">✓ Compatible con ZKTeco y Hikvision en red LAN</span>
+          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
             <button type="button"
-                    onclick="openLightbox('./Captura de pantalla (178).png', 'Configuración de Dirección IP y Puerto 4370 para Relojes ZKTeco')"
+                    onclick="openLightbox('./mod-config-ihss-extras-zkteco.png', 'Parámetros IHSS/RAP, Automatización de Horas Extras y Reloj ZKTeco')"
                     class="font-bold text-zkGreen hover:underline">
-              Ampliar configuración →
+              ⚙️ Ampliar Parámetros y Horas Extras Auto →
             </button>
-          </div>
-        </article>
-
-        <!-- TARJETA 4: MOTOR DE NÓMINA HONDUREÑA -> Capturas (176) y (177) -->
-        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between">
-          <div>
-            <div class="app-screenshot-crop cursor-zoom-in border-b border-slate-200"
-                 onclick="openLightbox('./Captura de pantalla (177).png', 'Módulo 04: Planilla Quincenal (50%) y Mensual (100%), Reporte Contable General y Voucher con IHSS (EM/IVM) y RAP')">
-              <img src="./Captura de pantalla (177).png" alt="Voucher de Pago con IHSS y RAP en HRMS Honduras" />
-              <span class="absolute top-3 left-3 bg-zkGreen text-white text-[11px] font-bold px-3 py-1 rounded-md shadow">
-                Módulo 04 • Planilla Quincenal y Mensual
-              </span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-extrabold text-zkBlue">Motor de Nómina Hondureña: Quincenal (50%) y Mensual (IHSS L. 11,903.13 y RAP 1.5%)</h3>
-              <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                Procese su <strong>1ra Quincena, 2da Quincena (50%) o Planilla Mensual (100%)</strong> en un clic incluyendo <strong>bonos, préstamos, aumentos salariales y horas extras (+25%, +50%, +75%, +100%)</strong>. Incluye <strong>Reporte General de Planilla Contable</strong> (ajustado al 100% de su pantalla con desglose de IHSS Salud EM, IHSS IVM, RAP y firmas de <em>Elaborado, Revisado y Autorizado</em>) y <strong>vouchers individuales</strong> con firma del empleado para auditorías de la <strong>SETRASS</strong>.
-              </p>
-            </div>
-          </div>
-          <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-            <span class="font-semibold text-zkBlue">✓ Reporte contable general (100% pantalla) y vouchers individuales</span>
             <button type="button"
-                    onclick="openLightbox('./Captura de pantalla (179).png', 'Parámetros de Nómina Editables: Techo Salarial IHSS (11,903.13), EM, IVM y RAP (1.5%)')"
-                    class="font-bold text-zkGreen hover:underline">
-              Ver parámetros IHSS/RAP →
+                    onclick="openLightbox('./Captura de pantalla (180).png', 'Seguridad Local: Contraseña Maestra y Exportación de Base de Datos Offline')"
+                    class="font-bold text-zkBlue hover:underline">
+              🔒 Ver Contraseña Maestra y Backup →
             </button>
           </div>
         </article>
@@ -401,25 +517,25 @@
   </section>
 
   <!-- ==========================================
-       3.5 GALERÍA COMPLETA DE LAS 10 CAPTURAS REALES DEL SISTEMA
+       3.5 GALERÍA COMPLETA DE LAS 15 MEJORES CAPTURAS DEL SISTEMA
        ========================================== -->
   <section id="capturas" class="bg-white py-20 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-12">
         <span class="text-xs font-bold uppercase tracking-widest text-zkGreen">Transparencia Total de Punta a Punta</span>
         <h2 class="mt-2 text-2xl sm:text-3xl font-extrabold text-zkBlue">
-          Recorrido Visual por las 10 Pantallas de HRMS Honduras
+          Galería Completa: 15 Pantallas Reales de HRMS Honduras
         </h2>
         <p class="mt-3 text-slate-600 text-sm sm:text-base">
-          Inspeccione cada detalle de la interfaz antes de agendar su demostración. Haga clic en cualquier imagen para verla en tamaño completo.
+          Inspeccione cada módulo y actualización antes de agendar su demostración. Haga clic sobre cualquier captura para verla en pantalla completa.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         
-        <!-- 1. Captura (181) -->
+        <!-- 1. Dashboard -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (181).png', '1. Panel Principal (Dashboard): Vista ejecutiva de los 5 módulos activos')">
+             onclick="openLightbox('./Captura de pantalla (181).png', '1. Panel Principal (Dashboard): Vista ejecutiva del sistema HRMS Honduras')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (181).png" alt="Panel Principal Dashboard" class="group-hover:scale-105 transition-transform" />
           </div>
@@ -429,111 +545,171 @@
           </div>
         </div>
 
-        <!-- 2. Captura (172) -->
+        <!-- 2. Directorio con Fotos y Horarios -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (172).png', '2. Directorio de Empleados: Gestión de puestos, departamentos y sueldos en Lempiras')">
+             onclick="openLightbox('./mod-directorio-empleados-fotos.png', '2. Directorio de Empleados: Fotografías, DNI, Horario Asignado, Salario y botón de Carnets')">
           <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (172).png" alt="Directorio de Empleados" class="group-hover:scale-105 transition-transform" />
+            <img src="./mod-directorio-empleados-fotos.png" alt="Directorio de Empleados con Fotos" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 02</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Directorio de Empleados</h4>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 02 • Actualizado</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Directorio con Fotos y Horario</h4>
           </div>
         </div>
 
-        <!-- 3. Captura (173) -->
+        <!-- 3. Pliego de Carnets QR -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (173).png', '3. Control de Asistencia: Reloj en vivo con marcaje ZKTeco, QR USB, Huella y RFID')">
+             onclick="openLightbox('./mod-galeria-carnets-qr.png', '3. Galería de Carnets Corporativos con Fotografía Oficial, DNI, Cargo y Código QR Único')">
           <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (173).png" alt="Control de Asistencia" class="group-hover:scale-105 transition-transform" />
+            <img src="./mod-galeria-carnets-qr.png" alt="Galería de Carnets QR" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 03</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Asistencia ZKTeco y QR</h4>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 03 • Nuevo</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Galería e Impresión Carnets QR</h4>
           </div>
         </div>
 
-        <!-- 4. Captura (174) -->
+        <!-- 4. Ficha Nuevo Empleado y Horario -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (174).png', '4. Solicitudes y Acciones: Registro de permisos, vacaciones, sanciones y datos de empresa')">
+             onclick="openLightbox('./mod-nuevo-empleado-horario.png', '4. Registro de Empleado: Fotografía de Carnét, DNI, ID Biométrico y Horario Laboral Contratado')">
           <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (174).png" alt="Solicitudes y Acciones de Personal" class="group-hover:scale-105 transition-transform" />
+            <img src="./mod-nuevo-empleado-horario.png" alt="Nuevo Empleado y Horario Laboral" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 04</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Acciones de Personal y RTN</h4>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 04 • Nuevo</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Ficha y Horario del Empleado</h4>
           </div>
         </div>
 
-        <!-- 5. Captura (175) -->
+        <!-- 5. Reloj de Marcaje y Marcas Hoy -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (175).png', '5. Gestión de Nómina: Controles para Modalidad Quincenal/Mensual, Bonos, Préstamos, Horas Extras y Aumentos')">
+             onclick="openLightbox('./mod-asistencia-reloj-marcas.png', '5. Control de Asistencia Conectado a Planilla: Reloj en vivo, alerta de faltantes y tabla de marcas del día')">
           <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (175).png" alt="Módulo de Nómina Inicial" class="group-hover:scale-105 transition-transform" />
+            <img src="./mod-asistencia-reloj-marcas.png" alt="Control de Asistencia y Marcas de Hoy" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 05</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Bonos, Préstamos y Extras</h4>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 05 • Actualizado</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Reloj y Marcas Registradas Hoy</h4>
           </div>
         </div>
 
-        <!-- 6. Captura (176) -->
+        <!-- 6. Sincronización Directa ZKTeco TCP/IP -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (176).png', '6. Planilla Quincenal (50%) y Mensual (100%): Sueldo, horas extras, deducciones IHSS/RAP y Reporte General Contable')">
+             onclick="openLightbox('./mod-zkteco-sync-vivo.png', '6. Sincronización Directa ZKTeco (TCP/IP): Descarga de marcas de huella y rostro en 5 segundos sin USB')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-zkteco-sync-vivo.png" alt="Sincronización ZKTeco en Vivo" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 06</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Sincronización ZKTeco en Vivo</h4>
+          </div>
+        </div>
+
+        <!-- 7. Tablero de Auditoría de Marcas -->
+        <div class="group rounded-xl border-2 border-zkGreen/50 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./mod-asistencia-auditoria-header.png', '7. Auditoría de Marcas de Entrada: Panel de control con contadores de Con Marca, Sin Marca, Justificados y Deducidos')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-asistencia-auditoria-header.png" alt="Tablero de Auditoría de Marcas" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 07 • ★ Nuevo</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Tablero Auditoría de Marcas</h4>
+          </div>
+        </div>
+
+        <!-- 8. Justificar Pago o Aplicar Deducción -->
+        <div class="group rounded-xl border-2 border-zkGreen/50 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./mod-auditoria-aprobar-deducir.png', '8. Resolución RRHH para Empleados sin Marca: Botones para Justificar (Aprobar Pago) o Aplicar Deducción en Planilla')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-auditoria-aprobar-deducir.png" alt="Justificar Pago o Aplicar Deducción" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 08 • ★ Nuevo</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Aprobar Pago o Deducir Día</h4>
+          </div>
+        </div>
+
+        <!-- 9. Centro de Reportes Ejecutivos -->
+        <div class="group rounded-xl border-2 border-zkBlue/40 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./mod-centro-reportes-ejecutivos.png', '9. Centro de Reportes Ejecutivos: 5 Reportes integrados con exportación a Excel (CSV) y PDF Oficial')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-centro-reportes-ejecutivos.png" alt="Centro de Reportes Ejecutivos" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 09 • ★ Nuevo</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Centro de Reportes (Excel/PDF)</h4>
+          </div>
+        </div>
+
+        <!-- 10. Solicitudes, Vacaciones y Permisos -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./mod-acciones-vacaciones.png', '10. Solicitudes / Permisos / Vacaciones: Registro de acciones con rango de fechas y documentos justificativos')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-acciones-vacaciones.png" alt="Registro de Vacaciones y Permisos" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 10</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Vacaciones, Permisos y Acciones</h4>
+          </div>
+        </div>
+
+        <!-- 11. Jornadas de Horas Extras -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./mod-horas-extras-jornadas.png', '11. Registro de Horas Extras según Ley Hondureña: Diurna (+25%), Nocturna (+50%), Mixta (+75%) y Feriado/Descanso (+100%)')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-horas-extras-jornadas.png" alt="Registro de Horas Extras Honduras" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 11</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Horas Extras (+25% a +100%)</h4>
+          </div>
+        </div>
+
+        <!-- 12. Registro de Bonificaciones -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./mod-bonificacion-nomina.png', '12. Registro de Bonificaciones y Comisiones en Lempiras directas a la Planilla')">
+          <div class="app-screenshot-crop">
+            <img src="./mod-bonificacion-nomina.png" alt="Registro de Bonificaciones" class="group-hover:scale-105 transition-transform" />
+          </div>
+          <div class="p-3">
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 12</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Bonificaciones y Préstamos</h4>
+          </div>
+        </div>
+
+        <!-- 13. Planilla Quincenal y Mensual Procesada -->
+        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
+             onclick="openLightbox('./Captura de pantalla (176).png', '13. Planilla Quincenal (50%) y Mensual (100%): Sueldo, horas extras, deducciones IHSS/RAP y Neto a Pagar')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (176).png" alt="Planilla Procesada" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 06</span>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 13</span>
             <h4 class="text-xs font-bold text-zkBlue mt-0.5">Planilla Quincenal y Mensual</h4>
           </div>
         </div>
 
-        <!-- 7. Captura (177) -->
+        <!-- 14. Voucher Individual y Reporte Contable -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (177).png', '7. Voucher Individual y Reporte General: Recibos con firma del trabajador y planilla contable con firmas de autorización')">
+             onclick="openLightbox('./Captura de pantalla (177).png', '14. Voucher de Pago Individual y Reporte Contable General con firmas de autorización')">
           <div class="app-screenshot-crop">
             <img src="./Captura de pantalla (177).png" alt="Voucher de Pago Imprimible" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 07</span>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 14</span>
             <h4 class="text-xs font-bold text-zkBlue mt-0.5">Voucher y Reporte Contable</h4>
           </div>
         </div>
 
-        <!-- 8. Captura (179) -->
+        <!-- 15. Configuración IHSS, Horas Extras Auto y ZKTeco -->
         <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (179).png', '8. Parámetros Legales de Honduras: Techo Salarial IHSS (L. 11,903.13) y RAP (1.5%) editables')">
+             onclick="openLightbox('./mod-config-ihss-extras-zkteco.png', '15. Configuración Todo-en-Uno: Techos IHSS/RAP, Automatización de Horas Extras según Horario e Integración IP ZKTeco')">
           <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (179).png" alt="Parámetros de Nómina IHSS y RAP" class="group-hover:scale-105 transition-transform" />
+            <img src="./mod-config-ihss-extras-zkteco.png" alt="Configuración IHSS, Horas Extras y ZKTeco" class="group-hover:scale-105 transition-transform" />
           </div>
           <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 08</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Techos IHSS y RAP Editables</h4>
-          </div>
-        </div>
-
-        <!-- 9. Captura (178) -->
-        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (178).png', '9. Integración Biométrica ZKTeco (IP + Puerto 4370) en Red Local LAN para Empresas en Honduras')">
-          <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (178).png" alt="Integración Reloj Biométrico ZKTeco" class="group-hover:scale-105 transition-transform" />
-          </div>
-          <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 09</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Conexión IP Reloj ZKTeco</h4>
-          </div>
-        </div>
-
-        <!-- 10. Captura (180) -->
-        <div class="group rounded-xl border border-slate-200 overflow-hidden bg-zkGray shadow-sm hover:shadow-md transition-all cursor-zoom-in"
-             onclick="openLightbox('./Captura de pantalla (180).png', '10. Seguridad Local: Contraseña Maestra activa y Exportación de Base de Datos Offline')">
-          <div class="app-screenshot-crop">
-            <img src="./Captura de pantalla (180).png" alt="Seguridad y Respaldo de Base de Datos" class="group-hover:scale-105 transition-transform" />
-          </div>
-          <div class="p-3">
-            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 10</span>
-            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Contraseña Maestra y Backup</h4>
+            <span class="text-[10px] font-extrabold uppercase text-zkGreen">Pantalla 15 • Actualizado</span>
+            <h4 class="text-xs font-bold text-zkBlue mt-0.5">Techos IHSS, Extras Auto y ZKTeco</h4>
           </div>
         </div>
 
@@ -552,7 +728,7 @@
           Planes de Licenciamiento de HRMS Honduras
         </h2>
         <p class="mt-3 text-slate-600 text-base">
-          Elija entre modalidades Semestral, Anual o adquiera su Licencia Perpetua de pago único. Todos los planes incluyen todos los módulos.
+          Elija entre modalidades Semestral, Anual o adquiera su Licencia Perpetua de pago único. Todos los planes incluyen las nuevas funciones de Auditoría de Marcas y Centro de Reportes Ejecutivos.
         </p>
       </div>
 
@@ -585,10 +761,10 @@
 
             <ul class="mt-6 space-y-3 text-sm text-slate-600">
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Hasta 15 colaboradores activos</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Generación e impresión de Carnets con QR</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Marcaje por Lector QR USB + 1 Reloj ZKTeco</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal (50%) y Mensual (IHSS, RAP y Extras)</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reporte contable general y vouchers individuales</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Pliego de Carnets con Foto y QR + 1 Reloj ZKTeco</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Auditoría de Marcas (Justificar Pago o Deducir Día)</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Centro de 5 Reportes Ejecutivos (Excel CSV y PDF)</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal (50%) y Mensual (IHSS, RAP y Vouchers)</li>
             </ul>
           </div>
 
@@ -629,10 +805,10 @@
 
             <ul class="mt-6 space-y-3 text-sm text-slate-700">
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> <strong>Hasta 35 colaboradores activos</strong></li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Sincronización con hasta 3 Relojes ZKTeco en red</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Módulo completo de Lector QR USB, Huella y RFID</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Sincronización con hasta 3 Relojes ZKTeco en red + QR</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Auditoría de Marcas (Justificación o Deducción en Nómina)</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Centro de Reportes Ejecutivos (Excel CSV + PDF Oficial)</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal/Mensual, IHSS, RAP, Bonos y Préstamos</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reporte general de planilla contable y Contraseña Maestra</li>
             </ul>
           </div>
 
@@ -670,9 +846,9 @@
             <ul class="mt-6 space-y-3 text-sm text-slate-600">
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Hasta 75 colaboradores activos</li>
               <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Relojes biométricos ZKTeco y lectores QR ilimitados</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal (1ra/2da) y Mensual por departamento</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Reporte contable general y vouchers listos para SETRASS</li>
-              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Capacitación extendida para equipo contable</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Auditoría de Marcas, Deducciones y Reportes Ejecutivos</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Planilla Quincenal/Mensual y Vouchers listos para SETRASS</li>
+              <li class="flex items-center gap-2.5"><span class="text-zkGreen font-bold">✓</span> Capacitación extendida para equipo de RRHH y Contabilidad</li>
             </ul>
           </div>
 
@@ -746,34 +922,39 @@
       </div>
 
       <div class="space-y-4">
-        <!-- FAQ 1 -->
+        <!-- FAQ 1: Auditoría de marcas sin entrada -->
         <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all" open>
           <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
-            <span>1. ¿Qué requisitos mínimos de hardware necesito para instalar HRMS Honduras?</span>
-            <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            No necesita servidores dedicados ni equipos costosos. <strong>HRMS Honduras</strong> está optimizado para funcionar con total fluidez en cualquier PC o laptop estándar de oficina con <strong>Windows 10 o Windows 11 (64 bits), 4 GB de memoria RAM</strong>, procesador Intel Core i3 / AMD Ryzen 3 (o equivalente) y 500 MB de espacio libre en disco.
-          </p>
-        </details>
-
-        <!-- FAQ 2 -->
-        <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
-          <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
-            <span>2. ¿Cuál es la mecánica exacta del marcaje por Código QR mediante lector USB?</span>
+            <span>1. ¿Cómo funciona la nueva Auditoría de Marcas cuando un empleado no marca entrada?</span>
             <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
           </summary>
           <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
             <p>
-              Desde el sistema usted imprime el carnet de cada empleado con su fotografía y un código QR único. Al conectar cualquier lector de códigos QR estándar por puerto USB a la PC, el empleado simplemente acerca su carnet al lector al entrar o salir: el sistema valida su identidad en menos de 1 segundo y envía las horas trabajadas directamente al cálculo de la planilla.
+              Si un colaborador no registra marca de entrada en el reloj biométrico o lector QR, el sistema coloca automáticamente su día en estado <strong>"Sin Marca — Espera Justificación"</strong>. Desde la pestaña <strong>Auditoría de Marcas y Justificación</strong>, RRHH tiene dos opciones claras: <strong>1) Justificar (Aprobar Pago)</strong> escribiendo el motivo autorizado (ej. gira de ventas, incapacidad médica, falla eléctrica) para que se pague su día íntegro, o <strong>2) Aplicar Deducción</strong> para que el sistema descuente automáticamente 1 día de salario base en el cálculo de su planilla Quincenal o Mensual.
             </p>
-            <button type="button" onclick="openLightbox('./Captura de pantalla (173).png', 'Selector de Marcador por Código QR USB y Reloj ZKTeco')" class="text-xs font-bold text-zkGreen hover:underline">
-              Ver captura del módulo de marcaje QR →
+            <button type="button" onclick="openLightbox('./mod-auditoria-aprobar-deducir.png', 'Verificación de Marcas de Entrada: Aprobar Pago con Justificación o Aplicar Deducción en Planilla')" class="text-xs font-bold text-zkGreen hover:underline">
+              Ver captura del módulo de Auditoría de Marcas →
             </button>
           </div>
         </details>
 
-        <!-- FAQ 3 -->
+        <!-- FAQ 2: Reportes Ejecutivos -->
+        <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
+          <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
+            <span>2. ¿Qué reportes puedo exportar a Excel o PDF desde el Centro de Reportes Ejecutivos?</span>
+            <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
+          </summary>
+          <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
+            <p>
+              El <strong>Centro de Reportes Ejecutivos</strong> incluye 5 reportes especializados que usted puede filtrar por colaborador individual, departamento o rango de fechas (`Fecha Desde / Fecha Hasta`): <strong>Consolidado General por Empleado</strong>, <strong>Horas Extras por Empleado</strong> (cantidad de horas, tipo de jornada y monto en Lempiras), <strong>Permisos y Vacaciones</strong>, <strong>Entradas Tardías</strong> (minutos de retraso acumulados) y <strong>Ausencias, Justificaciones y Deducciones</strong>. Todos cuentan con botones para <strong>Exportar a Excel (CSV)</strong> e <strong>Imprimir / Guardar PDF Oficial</strong> con bloques de firma.
+            </p>
+            <button type="button" onclick="openLightbox('./mod-centro-reportes-ejecutivos.png', 'Centro de Reportes Ejecutivos con exportación a Excel CSV y PDF Oficial')" class="text-xs font-bold text-zkGreen hover:underline">
+              Ver captura del Centro de Reportes Ejecutivos →
+            </button>
+          </div>
+        </details>
+
+        <!-- FAQ 3: Planilla Quincenal / Mensual e IHSS/RAP -->
         <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
           <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
             <span>3. ¿Cómo funciona el cálculo Quincenal (50%) vs. Mensual (100%) y la actualización de techos IHSS/RAP?</span>
@@ -781,23 +962,23 @@
           </summary>
           <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
             <p>
-              En el módulo de Nómina puede alternar con un clic entre <strong>Planilla Quincenal (1ra o 2da Quincena al 50% de sueldo base y 50% de deducciones de ley)</strong> y <strong>Planilla Mensual (100%)</strong>, sumando las horas extras reales del período, bonos y préstamos. Además, en <strong>Configuración → Parámetros de Nómina</strong> puede actualizar en cualquier momento el <strong>Techo Salarial del IHSS (actualmente L. 11,903.13)</strong>, porcentajes de Salud (EM), Pensión (IVM) y <strong>RAP (1.5%)</strong>. El sistema genera tanto el <strong>Reporte General de Planilla Contable</strong> (ajustado al 100% de la pantalla con firmas de <em>Elaborado, Revisado y Autorizado</em>) como los vouchers individuales de pago.
+              En el módulo de Nómina puede alternar con un clic entre <strong>Planilla Quincenal (50% de sueldo base y 50% de deducciones de ley)</strong> y <strong>Planilla Mensual (100%)</strong>, sumando las horas extras reales del período, bonos y préstamos o deducciones por ausencias no justificadas. Además, en <strong>Configuración → Parámetros de Nómina</strong> puede editar en cualquier momento el <strong>Techo Salarial del IHSS (`L. 11,903.13`)</strong>, porcentajes de Salud (EM), Pensión (IVM) y <strong>RAP (`1.5%`)</strong>.
             </p>
-            <button type="button" onclick="openLightbox('./Captura de pantalla (179).png', 'Parámetros de Nómina Editables en HRMS Honduras')" class="text-xs font-bold text-zkGreen hover:underline">
+            <button type="button" onclick="openLightbox('./mod-config-ihss-extras-zkteco.png', 'Parámetros de Nómina Editables, Automatización de Horas Extras e IP ZKTeco')" class="text-xs font-bold text-zkGreen hover:underline">
               Ver captura de Parámetros Legales Editables →
             </button>
           </div>
         </details>
 
-        <!-- FAQ 4 -->
+        <!-- FAQ 4: Requisitos y Privacidad Offline -->
         <details class="group bg-white rounded-xl border border-slate-200 p-6 open:shadow-sm transition-all">
           <summary class="flex cursor-pointer items-center justify-between text-base font-bold text-zkBlue list-none">
-            <span>4. ¿Cómo se garantiza la privacidad absoluta del sistema al ser 100% Offline?</span>
+            <span>4. ¿Qué requisitos necesita mi PC y cómo se garantiza la privacidad al ser 100% Offline?</span>
             <span class="ml-4 text-zkGreen group-open:rotate-45 transition-transform text-xl font-extrabold">+</span>
           </summary>
           <div class="mt-3 text-sm text-slate-600 leading-relaxed space-y-2">
             <p>
-              Toda la información salarial y personal se guarda exclusivamente en la computadora de su empresa, nunca en servidores de terceros en internet. Además, <strong>HRMS Honduras</strong> cuenta con bloqueo por <strong>Contraseña Maestra</strong> al iniciar la aplicación y un botón de <strong>Exportar Base de Datos</strong> para que conserve respaldos locales seguros en segundos.
+              Funciona con total fluidez en cualquier PC o laptop con <strong>Windows 10 o Windows 11 (64 bits) y 4 GB de RAM</strong>. Toda la información salarial y personal se guarda exclusivamente en el disco duro de su empresa, nunca en servidores externos. Cuenta con bloqueo por <strong>Contraseña Maestra</strong> y botón de <strong>Exportar Base de Datos</strong> para respaldos locales inmediatos.
             </p>
             <button type="button" onclick="openLightbox('./Captura de pantalla (180).png', 'Seguridad por Contraseña Maestra y Exportación de Base de Datos Local')" class="text-xs font-bold text-zkGreen hover:underline">
               Ver captura de Seguridad y Respaldo Local →
@@ -812,7 +993,6 @@
        6. FORMULARIO DE CAPTURA FINAL (LEAD GEN)
        ========================================== -->
   <section id="contacto" class="relative bg-zkBlue py-20 text-white overflow-hidden">
-    <!-- Imagen corporativa shutterstock_2703928353.jpg integrada sutilmente en el fondo -->
     <div class="absolute inset-0 pointer-events-none opacity-10">
       <img src="./shutterstock_2703928353.jpg" alt="" class="w-full h-full object-cover" />
     </div>
@@ -828,12 +1008,12 @@
             Solicite una Demostración en Vivo de 15 Minutos para su Empresa
           </h2>
           <p class="text-white/85 text-sm sm:text-base leading-relaxed">
-            Complete sus datos y le contactaremos de inmediato al WhatsApp o teléfono indicado para mostrarle cómo <strong>HRMS Honduras</strong> descarga marcas ZKTeco y calcula su planilla real.
+            Complete sus datos y le contactaremos de inmediato al WhatsApp o teléfono indicado para mostrarle cómo <strong>HRMS Honduras</strong> descarga marcas ZKTeco, audita ausencias y calcula su planilla real.
           </p>
           <ul class="space-y-2.5 text-sm text-white/90 pt-2">
-            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">✓</span> Demostración por Zoom o Microsoft Teams en 15 minutos</li>
+            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">✓</span> Demostración por Zoom, AnyDesk o Microsoft Teams en 15 minutos</li>
             <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">✓</span> Línea directa de WhatsApp Corporativo: <strong>+504 9644-7721</strong></li>
-            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">✓</span> Instalación disponible en todo Honduras</li>
+            <li class="flex items-center gap-2"><span class="text-zkGreen font-extrabold">✓</span> Implementación disponible en todo Honduras</li>
           </ul>
         </div>
 
@@ -855,7 +1035,7 @@
 
             <div>
               <label for="empresa" class="block text-xs font-bold uppercase text-slate-600 mb-1">Nombre de la Empresa *</label>
-              <input type="text" id="empresa" name="empresa" required placeholder="Ej. Agroindustrias Portal del Granero"
+              <input type="text" id="empresa" name="empresa" required placeholder="Ej. Inversiones Industriales S. de R.L."
                      class="w-full px-4 py-3 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-zkBlue" />
             </div>
 
@@ -879,7 +1059,7 @@
             </div>
 
             <button type="submit"
-                    class="w-full py-4 px-6 rounded-xl text-sm sm:text-base font-extrabold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-md transition-all">
+                    class="w-full py-4 px-6 rounded-xl text-sm sm:text-base font-extrabold text-white bg-zkGreen hover:bg-zkGreen-hover shadow-md transition-all cursor-pointer">
               Solicitar Demostración Sin Compromiso
             </button>
 
@@ -898,7 +1078,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <img src="./icon.png" alt="Logo HRMS Honduras" class="w-7 h-7 rounded-md" />
-        <p>© 2026 <strong>HRMS Honduras</strong>. Sistema de Recursos Humanos, Control de Asistencia y Planilla para Honduras.</p>
+        <p>© 2026 <strong>HRMS Honduras</strong>. Sistema de Recursos Humanos, Auditoría de Asistencia y Planilla para Honduras.</p>
       </div>
       <p class="font-semibold text-white">WhatsApp Comercial: +504 9644-7721 • Cobertura Nacional</p>
     </div>
@@ -927,7 +1107,7 @@
           <img src="./icon.png" alt="Icono" class="w-5 h-5 rounded" />
           <p id="lightbox-caption" class="text-xs sm:text-sm font-bold text-white"></p>
         </div>
-        <button type="button" onclick="closeLightbox()" class="text-white/80 hover:text-white font-extrabold text-sm px-3 py-1 rounded bg-white/10">
+        <button type="button" onclick="closeLightbox()" class="text-white/80 hover:text-white font-extrabold text-sm px-3 py-1 rounded bg-white/10 cursor-pointer">
           Cerrar ✕
         </button>
       </div>
